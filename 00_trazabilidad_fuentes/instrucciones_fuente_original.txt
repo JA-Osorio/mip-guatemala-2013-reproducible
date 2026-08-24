@@ -1,0 +1,29 @@
+INSTRUCCIONES PARA LA FUENTE ORIGINAL
+
+1. Obtenga de la fuente institucional la MIP producto por producto de Guatemala
+   para 2013, con sus hojas MIP_152x152 y M152x152.
+
+2. Guarde una copia sin modificar con el nombre MIP_AR2013_NPG.xlsx en:
+
+   00_trazabilidad_fuentes/fuentes_originales_no_redistribuidas/
+
+3. Compruebe la huella de la copia utilizada por la versión 0.1.0:
+
+   SHA-256
+   44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2
+
+   Linux/macOS:
+   sha256sum MIP_AR2013_NPG.xlsx
+
+4. Una copia con otra huella no se rechaza automáticamente, porque podría ser
+   otra copia oficial equivalente; el script emite una advertencia y exige
+   revisar los 22 controles de valores y estructura.
+
+5. Como alternativa, mantenga el libro fuera del repositorio y ejecute:
+
+   python 04_reproduccion_python/reproducir_mip_guatemala_2013.py \
+     --fuente /ruta/segura/MIP_AR2013_NPG.xlsx
+
+No edite celdas, fórmulas, signos ni etiquetas dentro de la fuente. Toda
+transformación debe quedar expresada en código y documentada.
+

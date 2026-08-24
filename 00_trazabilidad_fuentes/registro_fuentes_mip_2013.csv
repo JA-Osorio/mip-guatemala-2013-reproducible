@@ -1,0 +1,7 @@
+id_fuente,organismo,titulo_o_descripcion,archivo_local_o_referencia,anio_referencia,drive_id_o_url,uso_en_el_repositorio,redistribucion,sha256_copia_usada
+F01,Banco de Guatemala,Matriz insumo-producto producto por producto de Guatemala 2013,MIP_AR2013_NPG.xlsx,2013,https://drive.google.com/file/d/1ZyrY6lYtE8lbHob_BJFe6LRDPfywBmtK/view,Entrada canónica para matrices y vectores,No incluida por prudencia jurídica,44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2
+F02,Banco de Guatemala,Documento metodológico de la MIP 2013,Referencia externa,2013,https://drive.google.com/file/d/1MLxJVrZhUGoQ8nJyJ5IJP9EjUT6OBNSP/view,Definiciones supuestos y construcción,No incluida,
+F03,Banco de Guatemala,Nomenclaturas de productos y actividades 2013,Referencia externa,2013,https://drive.google.com/file/d/1ryDGuftCd0gqHm5lhkUMV9-B06X-f6uX/view,Validación de códigos y etiquetas,No incluida,
+F04,Equipo de investigación,Matriz doméstica histórica mtriz io.xlsx,mtriz io.xlsx,2013,Archivo proporcionado al equipo,Comparación de construcción previa,No incluida,05bbf54208ece342814278b029123c32517d7129dff0cb4b8c6d98c153fbbdbe
+F05,Equipo de investigación,Matriz doméstica histórica MIO.xlsx,MIO.xlsx,2013,Archivo proporcionado al equipo,Comparación de construcción previa,No incluida,0de411f8b0c76e30764926e1447ecd050f9562e6b6c1a49c9310eddc8d26ab13
+

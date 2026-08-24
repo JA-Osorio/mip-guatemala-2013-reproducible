@@ -1,0 +1,27 @@
+hoja,elemento,rango,tratamiento
+MIP_152x152,Códigos de columnas,D11:EY11,Conservar P001-P152
+MIP_152x152,Códigos y nombres de filas,B12:C163,Conservar orden y etiquetas
+MIP_152x152,Matriz Z doméstica,D12:EY163,Valores numéricos sin ajuste
+M152x152,Matriz Z importada,D12:EY163,Valores numéricos sin ajuste
+MIP_152x152,Total intermedio por fila,EZ12:EZ163,Control de suma de Z doméstica
+M152x152,Total intermedio por fila,EZ12:EZ163,Control de suma de Z importada
+MIP_152x152,Exportaciones FOB,FA12:FA163,Componente de utilización final
+MIP_152x152,Consumo de hogares,FB12:FB163,Componente de utilización final
+MIP_152x152,Consumo ISFLSH,FC12:FC163,Componente de utilización final
+MIP_152x152,Consumo de gobierno,FD12:FD163,Componente de utilización final
+MIP_152x152,Formación bruta de capital fijo,FF12:FF163,Componente de utilización final
+MIP_152x152,Variación de existencias,FG12:FG163,Componente de utilización final
+MIP_152x152,Ajuste CIF/FOB,FI12:FI163,Conservar publicado y aplicar multiplicador -1 para total
+MIP_152x152,Total utilización,FJ12:FJ163,Control de demanda final doméstica
+M152x152,Demanda final importada,FA12:FJ163,Misma selección y convención CIF/FOB
+MIP_152x152,Insumos domésticos por columna,D164:EY164,Control de suma por columna
+MIP_152x152,Insumos importados por columna,D167:EY167,Control de suma por columna
+MIP_152x152,Impuestos sobre productos,D168:EY168,Vector de cuentas primarias
+MIP_152x152,Subvenciones sobre productos,D169:EY169,Vector de cuentas primarias
+MIP_152x152,Impuestos netos sobre productos,D170:EY170,Vector de identidad de costos
+MIP_152x152,Valor agregado bruto oficial,D172:EY172,Vector oficial; no calcular por residuo
+MIP_152x152,Producción,D173:EY173,Denominador de coeficientes
+MIP_152x152,Producto interno bruto,D174:EY174,Vector complementario
+MIP_152x152,Componentes del VAB,D176:EY181,Control y desglose de VAB
+MIP_152x152,Puestos de trabajo,D183:EY183,Vector complementario
+
