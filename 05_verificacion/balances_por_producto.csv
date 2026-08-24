@@ -1,0 +1,153 @@
+codigo,producto,balance_fila_fuente,diferencia_produccion_utilizacion,balance_fila_ajustado,balance_columna
+P001,Maíz,0,-1.31876731757075e-10,0,0
+P002,Frijoles,0,-3.36513039655983e-11,0,-2.27373675443232e-13
+P003,Leguminosas (legumbres secas) y semillas oleaginosas,0,7.37827576813288e-11,0,0
+P004,Arroz,-1.4210854715202e-14,2.28226326726144e-11,0,0
+P005,Otros cereales,1.4210854715202e-14,-3.1244708225131e-06,0,0
+P006,Hortalizas,0,2.21916707232594e-10,0,0
+P007,Sandías y melones,0,1.87583282240666e-10,0,0
+P008,Ejotes y arvejas,0,2.43289832724258e-11,0,0
+P009,Raíces y tubérculos,0,-7.07132130628452e-11,0,0
+P010,Caña de azúcar y otras plantas azucareras,0,1.22791789181065e-07,0,0
+P011,Tabaco y otras plantas no perennes,-1.13686837721616e-13,5.22959453519434e-12,0,0
+P012,"Bananos, plátanos y otros",0,-2.63753463514149e-11,0,0
+P013,Frutas tropicales y subtropicales,0,-1.20508047984913e-11,0,0
+P014,"Berries, otras frutas y semillas de frutas",0,-1.91448634723201e-10,0,0
+P015,Palma africana,0,4.54747350886464e-13,0,0
+P016,Café en grano,9.09494701772928e-13,-1.81898940354586e-12,0,0
+P017,Cardamomo,0,0,0,0
+P018,Caucho natural,-2.27373675443232e-13,-4.54747350886464e-13,0,0
+P019,Propagación de plantas,-1.13686837721616e-13,-1.40062184073031e-10,0,0
+P020,"Otros frutos oleaginosos, otras plantas bebestibles y especias aromáticas",-2.8421709430404e-14,1.35173650051001e-10,0,0
+P021,Ganado bovino,0,0,0,0
+P022,Ganado porcino y otro tipo de animales vivos n.c.p.,0,0,0,0
+P023,Aves de corral,0,0,0,0
+P024,Leche cruda,0,0,0,0
+P025,Huevos,0,6.13908923696727e-11,0,0
+P026,Otros productos de animales vivos,0,5.95434812566964e-12,0,1.4210854715202e-14
+P027,Troncos de madera y leña,0,0,0,0
+P028,Productos forestales no madereros,0,8.50661763251992e-11,0,-2.8421709430404e-14
+P029,"Peces vivos, frescos o refrigerados",0,-1.02318153949454e-12,0,0
+P030,Crustáceos sin congelar y otros productos de la pesca,0,-1.46542333823163e-10,0,0
+P031,Petróleo crudo y gas natural,0,0,0,0
+P032,Minerales metálicos,0,-4.54747350886464e-13,0,4.54747350886464e-13
+P033,Minerales no metálicos,2.27373675443232e-13,-7.83347786637023e-09,0,0
+P034,Carne y despojos comestibles de ganado bovino; cueros y pieles de bovino y de otros animales,0,1.2732925824821e-10,0,0
+P035,Carne y despojos comestibles de ganado porcino,0,-2.43289832724258e-11,0,0
+P036,Carne y despojos comestibles de aves,0,1.24600774142891e-10,0,0
+P037,Carne y despojos de otros animales y conservas y preparados de carne,0,-9.54969436861575e-12,0,0
+P038,"Pescado congelado, preparado o en conserva y sus productos",-1.13686837721616e-13,-8.31050783745013e-11,0,0
+P039,"Crustáceos, moluscos y demás invertebrados acuáticos congelados, preparados o en conserva y sus productos",0,-6.05382410867605e-11,0,0
+P040,"Vegetales preparados o en conserva, legumbres y papas",0,1.26192389870994e-11,0,0
+P041,Preparaciones y conservas de frutas y nueces,0,-1.42904355016071e-10,0,0
+P042,Jugos de frutas,0,-9.43600753089413e-11,0,0
+P043,Aceites de origen vegetal,0,-3.91082721762359e-11,0,0
+P044,"Margarina, grasas y otros aceites de origen animal y vegetal",0,6.98037183610722e-11,0,0
+P045,Leche líquida y crema procesada,0,-6.57109922030941e-11,0,0
+P046,Otros productos lácteos n.c.p.,0,-1.19371179607697e-09,0,0
+P047,Harina de trigo,0,9.36779542826116e-11,0,0
+P048,Arroz sin cáscara,0,9.12905306904577e-11,0,0
+P049,"Otros productos de molinería, almidones y productos de almidón",0,-9.54969436861575e-12,0,0
+P050,Pan y otros productos de panadería y repostería n.c.p.,0,-1.08229869510978e-10,0,0
+P051,"Tortillas de maíz, incluso tostadas, horneadas o fritas",0,9.09494701772928e-13,0,0
+P052,"Azúcar de caña sin refinar y refinada, melaza y los demás azúcares n.c.p.",0,4.36557456851006e-11,0,0
+P053,Productos alimenticios n.c.p.,0,2.03726813197136e-10,0,0
+P054,Preparados para alimentación animal,9.09494701772928e-13,-6.3664629124105e-11,0,0
+P055,"Aguardientes, licores, vinos, demás bebidas espirituosas y productos del tabaco",0,8.8220986071974e-11,0,0
+P056,Malta y cerveza de malta,0,-3.86535248253495e-11,0,0
+P057,Bebidas no alcohólicas,0,-1.36424205265939e-11,0,0
+P058,Aguas minerales y otras aguas embotelladas,0,-6.79847289575264e-11,0,0
+P059,"Hilados, tejidos, telas y otros productos textiles excepto prendas de vestir",4.54747350886464e-13,1.7751517589204e-08,0,0
+P060,"Prendas de vestir, adobo y teñido de pieles",0,-1.95632310351357e-09,0,0
+P061,Cuero de piel curtida o adobada y cuero artificial o regenerado y artículos de cuero,-1.13686837721616e-13,-2.31921148952097e-11,0,0
+P062,"Calzado y sus partes, de cualquier material y de cualquier uso",0,-3.18323145620525e-11,0,0
+P063,"Madera aserrada y acepillada, productos de madera, corcho, paja y materiales trenzables",-4.54747350886464e-13,-2.45563569478691e-11,0,0
+P064,Pasta de papel y papel,-2.27373675443232e-13,-2.58296495303512e-10,0,0
+P065,Envases de papel y cartón,-9.09494701772928e-13,-1.95996108232066e-10,0,0
+P066,Productos de la edición,0,2.68073563347571e-10,0,0
+P067,Productos de la impresión,4.54747350886464e-13,7.50333128962666e-12,0,0
+P068,"Gasolinas, diésel oil y fuel oils",-4.2632564145606e-14,-2.45705678025843e-11,0,0
+P069,"Aceites, grasas lubricantes y otros aceites preparados",0,0,0,0
+P070,"Gases de petróleo, otros productos de la refinación de petróleo n.c.p.",-8.5265128291212e-14,-2.52043719228823e-10,0,0
+P071,"Abonos, fertilizantes y pesticidas",4.54747350886464e-13,-3.91082721762359e-11,0,0
+P072,"Pinturas, barnices, tintas y productos relacionados",0,-6.59383658785373e-12,0,0
+P073,"Jabón, preparados de limpieza, perfumes y preparados de toilet",0,8.54925019666553e-11,0,0
+P074,Otros productos químicos,0,-8.66293703438714e-10,0,0
+P075,Productos farmacéuticos,0,-4.56293491879478e-09,0,0
+P076,Productos de caucho y plástico,0,-1.45519152283669e-10,0,0
+P077,Vidrio y productos de vidrio,1.13686837721616e-13,-1.69393388205208e-11,0,0
+P078,Productos de cerámica y arcilla,2.27373675443232e-13,3.68345354218036e-11,0,0
+P079,"Cemento, cal y yeso",-1.36424205265939e-12,2.71938915830106e-10,0,0
+P080,"Artículos de hormigón, cemento y yeso",4.54747350886464e-13,-1.81444193003699e-10,0,0
+P081,Piedras talladas para construcción y otros productos minerales no metálicos n.c.p.,0,-8.01492205937393e-11,0,0
+P082,"Métales básicos de hierro y acero, productos primarios de metales preciosos y otros metales no ferrosos",-4.54747350886464e-13,-4.10909706261009e-09,0,0
+P083,Productos metálicos estructurales y sus partes de hierro o de acero,-1.13686837721616e-13,-7.77617970015854e-11,0,0
+P084,Otros productos elaborados de metal,4.54747350886464e-13,-4.76120476378128e-10,0,0
+P085,"Maquinaria para usos generales y especiales, sus partes y piezas, excepto electrodomésticos",0,-9.40872268984094e-10,0,0
+P086,Electrodomésticos y sus partes,-6.61744490042422e-24,-3.1229548035988e-08,0,0
+P087,"Maquinaria de oficina, contabilidad e informática, sus partes y piezas",0,-2.1801414680877e-08,0,0
+P088,"Maquinaria y aparatos eléctricos, sus partes y piezas",0,1.3505996321328e-10,0,0
+P089,"Equipo y aparatos de radio, televisión y comunicaciones",0,0,0,0
+P090,"Aparatos médicos, instrumentos ópticos y de precisión, relojes",0,1.88720150617883e-11,0,0
+P091,Equipo de transporte,0,3.12638803734444e-10,0,0
+P092,Muebles,0,-2.45563569478691e-11,0,0
+P093,Otros artículos n.c.p.,2.27373675443232e-13,2.50793164013885e-10,0,0
+P094,Residuos y desechos,2.27373675443232e-13,-3.09228198602796e-11,0,0
+P095,"Generación y distribución de energía eléctrica, gas, vapor y aire acondicionado",-1.81898940354586e-12,1.81898940354586e-12,0,0
+P096,Agua natural y distribución de agua natural,-9.09494701772928e-13,4.54747350886464e-13,0,0
+P097,"Evacuación de aguas residuales, recogida, tratamiento y eliminación de desechos",5.6843418860808e-14,1.13686837721616e-13,0,0
+P098,Edificaciones residenciales,0,0,0,0
+P099,Edificaciones no residenciales,0,-0.163310865901622,0,0
+P100,Obras de ingeniería civil,0,0,0,0
+P101,Servicios generales y especializados de construcción,-1.81898940354586e-12,2.11002770811319e-10,0,0
+P102,Servicios de comercio,0,-3.91446519643068e-09,0,0
+P103,Mantenimiento y reparación de vehículos automotores y motocicletas,0,-7.09405867382884e-11,0,0
+P104,Servicio de transporte de pasajeros por vía terrestre,0,-9.09494701772928e-13,0,0
+P105,Servicio de transporte de carga por vía terrestre,0,0.189999990836441,0,0
+P106,Otros tipos de transporte,0,4.39598750290315e-07,0,0
+P107,Servicios de almacenamiento y depósito,-5.6843418860808e-14,-3.76871867047157e-11,0,0
+P108,Otros servicios de apoyo al transporte,1.36424205265939e-12,4.82032191939652e-11,0,0
+P109,Servicios postales y de mensajería,-1.13686837721616e-13,-1.88720150617883e-11,0,0
+P110,Servicio de alojamiento,-3.41060513164848e-13,2.27373675443232e-13,0,0
+P111,Servicio de suministro de comidas y bebidas,0,2.5465851649642e-11,0,0
+P112,"Servicios de información, telecomunicaciones y radiodifusión",0,-6.18456397205591e-11,0,0
+P113,Servicios de banco central,0,0,0,0
+P114,Otros servicios financieros y servicios de banca de inversión,2.27373675443232e-13,4.54747350886464e-13,0,0
+P115,Servicios de Intermediación Financiera Medidos Indirectamente (SIFMI),0,-2.0190782379359e-10,0,0
+P116,"Servicios de seguro, reaseguro y fondos de pensiones",-2.27373675443232e-13,1.59161572810262e-11,0,0
+P117,Servicios auxiliares de la intermediación financiera,0,2.72848410531878e-12,0,0
+P118,Servicios de alquiler de vivienda,0,-3.63797880709171e-12,0,0
+P119,"Otros servicios inmobiliarios, excepto alquiler de vivienda",-1.81898940354586e-12,0,0,0
+P120,"Servicios jurídicos, de contabilidad, auditoría, teneduría de libros y consultoría fiscal",-4.54747350886464e-13,6.85304257785901e-10,0,0
+P121,Servicios de tecnología de la información,0,-1.45519152283669e-10,0,0
+P122,"Servicios de arquitectura e ingeniería, ensayos y análisis técnicos",0,-9.09494701772928e-13,0,0
+P123,"Otros servicios profesionales, científicos y técnicos",3.63797880709171e-12,-0.0250000000251021,0,0
+P124,Servicios de publicidad y estudios de mercado,9.09494701772928e-13,1.36424205265939e-11,0,0
+P125,Servicios de arrendamiento o alquiler sin operador,0,-3.79895936930552e-09,0,0
+P126,Servicios  de agencias de empleo y de dotación de recursos humanos,1.81898940354586e-12,0,0,0
+P127,"Servicios de agencias de viajes, operadores turísticos y actividades conexas",0,-1.13686837721616e-13,0,0
+P128,"Servicios de seguridad, sistemas de seguridad e investigación privada",1.36424205265939e-12,-9.09494701772928e-13,0,0
+P129,Servicios de limpieza,-3.41060513164848e-13,1.13686837721616e-13,0,0
+P130,Servicios telefónicos de centros de llamadas,0,-6.00266503170133e-11,0,0
+P131,"Servicios administrativos, de apoyo de oficina y otros servicios de apoyo a las empresas",0,5.72981662116945e-11,0,0
+P132,"Servicios de mantenimiento, reparación e instalación de productos metálicos elaborados, maquinaria y equipo",4.54747350886464e-13,-6.18456397205591e-11,0,0
+P133,Servicios de reparación de otros bienes,-1.13686837721616e-13,0,0,0
+P134,"Servicios de apoyo a la agricultura, caza, silvicultura y pesca",-4.54747350886464e-13,1.81898940354586e-12,0,0
+P135,"Servicios de apoyo a la explotación de minas y canteras y los relacionados con la distribución de electricidad, gas y agua",0,0,0,0
+P136,Servicios de manufactura,-9.09494701772928e-13,0,0,0
+P137,Servicios públicos del gobierno general,0,0,0,0
+P138,"Servicios públicos administrativos relacionados con la provisión de servicios educativos, de salud, servicios sociales, culturales y otros, sin contar los servicios de seguridad social",0,0,0,0
+P139,Otros servicios administrativos,0,0,0,0
+P140,Servicios públicos administrativos prestados a la comunidad en su conjunto,0,0,0,0
+P141,Servicios administrativos relacionados con los sistemas de seguridad social de afiliación obligatoria,0,0,0,1.13686837721616e-13
+P142,Servicios de enseñanza,0,4.36557456851006e-11,0,-3.63797880709171e-12
+P143,Servicios de hospitalización,0,0,0,0
+P144,Servicios médicos y dentales,0,0,0,0
+P145,Otros servicios de atención de la salud humana,0,-4.54747350886464e-13,0,0
+P146,"Servicios audiovisuales, recreativos, culturales y deportivos",0,-8.18545231595635e-12,0,0
+P147,Servicios de asociaciones que sirven a las empresas,-5.6843418860808e-14,-6.70752342557535e-12,0,0
+P148,Servicios de asociaciones que sirven a los hogares,0,0,0,0
+P149,Otros servicios,0,0,0,0
+P150,Servicios domésticos,0,0,0,0
+P151,Compras directas en el exterior por residentes,0,0,0,0
+P152,Compras directas en el territorio nacional por no residentes,0,0,0,0

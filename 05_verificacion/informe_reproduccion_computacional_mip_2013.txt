@@ -1,0 +1,43 @@
+INFORME DE REPRODUCCIÓN COMPUTACIONAL — MIP GUATEMALA 2013
+
+Fuente: MIP_AR2013_NPG.xlsx
+SHA-256: 44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2
+Cobertura: 152 productos, año de referencia 2013
+Valoración: precios básicos; millones de quetzales
+
+RESULTADOS DE CONTROL
+Aprobados: 22
+Advertencias: 0
+Fallidos: 0
+
+TOTALES PRINCIPALES
+Producción: 694946.567350
+Valor agregado bruto oficial: 392018.154929
+Transacciones intermedias domésticas: 221245.396948
+Transacciones intermedias importadas: 76354.120921
+Radio espectral A doméstica: 0.390615854513
+Residuo máximo de (I-A)L-I: 1.332e-15
+
+CONTROLES
+[APROBADO] SRC-01 — Huella SHA-256 de la copia de referencia: valor=44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2; tolerancia=44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2. Una huella distinta puede corresponder a otra copia oficial; requiere revisión de valores.
+[APROBADO] EST-01 — Cantidad de productos: valor=152; tolerancia=152. La MIP producto por producto debe contener 152 productos.
+[APROBADO] EST-02 — Secuencia completa de códigos NPG: valor=152; tolerancia=152. Se esperan códigos consecutivos P001–P152.
+[APROBADO] EST-03 — Coincidencia entre códigos de filas y columnas: valor=152; tolerancia=152. La matriz simétrica debe usar la misma nomenclatura en ambos ejes.
+[APROBADO] EST-04 — Etiquetas de producto no vacías: valor=152; tolerancia=152. Cada código debe conservar su denominación oficial.
+[APROBADO] MAT-01 — Dimensión de Z doméstica: valor=(152, 152); tolerancia=(152, 152). Bloque de transacciones intermedias de origen nacional.
+[APROBADO] MAT-02 — Dimensión de Z importada: valor=(152, 152); tolerancia=(152, 152). Bloque de utilización intermedia de importaciones.
+[APROBADO] MAT-03 — Transacciones intermedias no negativas: valor=0.0; tolerancia=>= 0. Los ajustes CIF/FOB pertenecen a demanda final, no a Z.
+[APROBADO] BAL-01 — Suma por fila de Z doméstica frente al subtotal de la fuente: valor=3.637978807091713e-12; tolerancia=1e-08. No se omiten ni duplican productos del bloque intermedio doméstico.
+[APROBADO] BAL-02 — Suma por fila de Z importada frente al subtotal de la fuente: valor=3.637978807091713e-12; tolerancia=1e-08. No se omiten ni duplican productos del bloque intermedio importado.
+[APROBADO] BAL-03 — Suma por columna de Z doméstica frente al subtotal de la fuente: valor=0.0; tolerancia=1e-08. Comprueba el total de insumos domésticos por producto producido.
+[APROBADO] BAL-04 — Suma por columna de Z importada frente al subtotal de la fuente: valor=1.7763568394002505e-15; tolerancia=1e-08. Comprueba el total de insumos importados por producto producido.
+[APROBADO] BAL-05 — Componentes no solapados de demanda final doméstica: valor=3.637978807091713e-12; tolerancia=1e-08. Excluye subtotales duplicados y resta el ajuste CIF/FOB, como hace el total publicado.
+[APROBADO] BAL-06 — Componentes no solapados de demanda final importada: valor=9.094947017729282e-13; tolerancia=1e-08. Mantiene por separado las utilizaciones finales importadas y la convención CIF/FOB.
+[APROBADO] BAL-07 — Diferencia producción–utilización publicada: valor=0.1899999908364407; tolerancia=0.2. La fuente advierte diferencias de redondeo; el ajuste se conserva explícitamente.
+[APROBADO] BAL-08 — Identidad exacta x = Z1 + y balanceada: valor=0.0; tolerancia=1e-08. La demanda final balanceada incorpora sin ocultarlo el ajuste producción–utilización.
+[APROBADO] BAL-09 — Identidad de costos por columna: valor=3.637978807091713e-12; tolerancia=0.2. x = insumos domésticos + importados + impuestos netos sobre productos + VAB.
+[APROBADO] BAL-10 — Componentes del VAB: valor=9.094947017729282e-13; tolerancia=0.2. Las subvenciones se mantienen con el signo de la fuente.
+[APROBADO] MOD-01 — Radio espectral de A doméstica: valor=0.39061585451264397; tolerancia=< 1. Condición suficiente para la serie de Leontief.
+[APROBADO] MOD-02 — Residuo de la inversa de Leontief: valor=1.3322676295501878e-15; tolerancia=1e-10. Comprueba (I-A)L = I.
+[APROBADO] MOD-03 — Suma de coeficientes contables por columna: valor=2.220446049250313e-16; tolerancia=0.2. Domésticos + importados + impuestos netos + VAB deben sumar uno cuando x>0.
+[APROBADO] MOD-04 — Columnas nulas para productos sin producción: valor=0.0; tolerancia=1e-08. Evita divisiones artificiales en productos con x=0.

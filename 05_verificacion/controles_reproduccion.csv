@@ -1,0 +1,23 @@
+control_id,description,status,value,tolerance,detail,mandatory
+SRC-01,Huella SHA-256 de la copia de referencia,APROBADO,44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2,44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2,Una huella distinta puede corresponder a otra copia oficial; requiere revisión de valores.,False
+EST-01,Cantidad de productos,APROBADO,152,152,La MIP producto por producto debe contener 152 productos.,True
+EST-02,Secuencia completa de códigos NPG,APROBADO,152,152,Se esperan códigos consecutivos P001–P152.,True
+EST-03,Coincidencia entre códigos de filas y columnas,APROBADO,152,152,La matriz simétrica debe usar la misma nomenclatura en ambos ejes.,True
+EST-04,Etiquetas de producto no vacías,APROBADO,152,152,Cada código debe conservar su denominación oficial.,True
+MAT-01,Dimensión de Z doméstica,APROBADO,"(152, 152)","(152, 152)",Bloque de transacciones intermedias de origen nacional.,True
+MAT-02,Dimensión de Z importada,APROBADO,"(152, 152)","(152, 152)",Bloque de utilización intermedia de importaciones.,True
+MAT-03,Transacciones intermedias no negativas,APROBADO,0.0,>= 0,"Los ajustes CIF/FOB pertenecen a demanda final, no a Z.",True
+BAL-01,Suma por fila de Z doméstica frente al subtotal de la fuente,APROBADO,3.637978807091713e-12,1e-08,No se omiten ni duplican productos del bloque intermedio doméstico.,True
+BAL-02,Suma por fila de Z importada frente al subtotal de la fuente,APROBADO,3.637978807091713e-12,1e-08,No se omiten ni duplican productos del bloque intermedio importado.,True
+BAL-03,Suma por columna de Z doméstica frente al subtotal de la fuente,APROBADO,0.0,1e-08,Comprueba el total de insumos domésticos por producto producido.,True
+BAL-04,Suma por columna de Z importada frente al subtotal de la fuente,APROBADO,1.7763568394002505e-15,1e-08,Comprueba el total de insumos importados por producto producido.,True
+BAL-05,Componentes no solapados de demanda final doméstica,APROBADO,3.637978807091713e-12,1e-08,"Excluye subtotales duplicados y resta el ajuste CIF/FOB, como hace el total publicado.",True
+BAL-06,Componentes no solapados de demanda final importada,APROBADO,9.094947017729282e-13,1e-08,Mantiene por separado las utilizaciones finales importadas y la convención CIF/FOB.,True
+BAL-07,Diferencia producción–utilización publicada,APROBADO,0.1899999908364407,0.2,La fuente advierte diferencias de redondeo; el ajuste se conserva explícitamente.,True
+BAL-08,Identidad exacta x = Z1 + y balanceada,APROBADO,0.0,1e-08,La demanda final balanceada incorpora sin ocultarlo el ajuste producción–utilización.,True
+BAL-09,Identidad de costos por columna,APROBADO,3.637978807091713e-12,0.2,x = insumos domésticos + importados + impuestos netos sobre productos + VAB.,True
+BAL-10,Componentes del VAB,APROBADO,9.094947017729282e-13,0.2,Las subvenciones se mantienen con el signo de la fuente.,True
+MOD-01,Radio espectral de A doméstica,APROBADO,0.39061585451264397,< 1,Condición suficiente para la serie de Leontief.,True
+MOD-02,Residuo de la inversa de Leontief,APROBADO,1.3322676295501878e-15,1e-10,Comprueba (I-A)L = I.,True
+MOD-03,Suma de coeficientes contables por columna,APROBADO,2.220446049250313e-16,0.2,Domésticos + importados + impuestos netos + VAB deben sumar uno cuando x>0.,True
+MOD-04,Columnas nulas para productos sin producción,APROBADO,0.0,1e-08,Evita divisiones artificiales en productos con x=0.,True
