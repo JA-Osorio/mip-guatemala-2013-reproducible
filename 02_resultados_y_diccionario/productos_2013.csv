@@ -1,0 +1,153 @@
+orden,codigo,producto,produccion_cero,unidad_monetaria,precios,anio_referencia
+1,P001,Maíz,False,millones de quetzales,precios básicos,2013
+2,P002,Frijoles,False,millones de quetzales,precios básicos,2013
+3,P003,Leguminosas (legumbres secas) y semillas oleaginosas,False,millones de quetzales,precios básicos,2013
+4,P004,Arroz,False,millones de quetzales,precios básicos,2013
+5,P005,Otros cereales,False,millones de quetzales,precios básicos,2013
+6,P006,Hortalizas,False,millones de quetzales,precios básicos,2013
+7,P007,Sandías y melones,False,millones de quetzales,precios básicos,2013
+8,P008,Ejotes y arvejas,False,millones de quetzales,precios básicos,2013
+9,P009,Raíces y tubérculos,False,millones de quetzales,precios básicos,2013
+10,P010,Caña de azúcar y otras plantas azucareras,False,millones de quetzales,precios básicos,2013
+11,P011,Tabaco y otras plantas no perennes,False,millones de quetzales,precios básicos,2013
+12,P012,"Bananos, plátanos y otros",False,millones de quetzales,precios básicos,2013
+13,P013,Frutas tropicales y subtropicales,False,millones de quetzales,precios básicos,2013
+14,P014,"Berries, otras frutas y semillas de frutas",False,millones de quetzales,precios básicos,2013
+15,P015,Palma africana,False,millones de quetzales,precios básicos,2013
+16,P016,Café en grano,False,millones de quetzales,precios básicos,2013
+17,P017,Cardamomo,False,millones de quetzales,precios básicos,2013
+18,P018,Caucho natural,False,millones de quetzales,precios básicos,2013
+19,P019,Propagación de plantas,False,millones de quetzales,precios básicos,2013
+20,P020,"Otros frutos oleaginosos, otras plantas bebestibles y especias aromáticas",False,millones de quetzales,precios básicos,2013
+21,P021,Ganado bovino,False,millones de quetzales,precios básicos,2013
+22,P022,Ganado porcino y otro tipo de animales vivos n.c.p.,False,millones de quetzales,precios básicos,2013
+23,P023,Aves de corral,False,millones de quetzales,precios básicos,2013
+24,P024,Leche cruda,False,millones de quetzales,precios básicos,2013
+25,P025,Huevos,False,millones de quetzales,precios básicos,2013
+26,P026,Otros productos de animales vivos,False,millones de quetzales,precios básicos,2013
+27,P027,Troncos de madera y leña,False,millones de quetzales,precios básicos,2013
+28,P028,Productos forestales no madereros,False,millones de quetzales,precios básicos,2013
+29,P029,"Peces vivos, frescos o refrigerados",False,millones de quetzales,precios básicos,2013
+30,P030,Crustáceos sin congelar y otros productos de la pesca,False,millones de quetzales,precios básicos,2013
+31,P031,Petróleo crudo y gas natural,False,millones de quetzales,precios básicos,2013
+32,P032,Minerales metálicos,False,millones de quetzales,precios básicos,2013
+33,P033,Minerales no metálicos,False,millones de quetzales,precios básicos,2013
+34,P034,Carne y despojos comestibles de ganado bovino; cueros y pieles de bovino y de otros animales,False,millones de quetzales,precios básicos,2013
+35,P035,Carne y despojos comestibles de ganado porcino,False,millones de quetzales,precios básicos,2013
+36,P036,Carne y despojos comestibles de aves,False,millones de quetzales,precios básicos,2013
+37,P037,Carne y despojos de otros animales y conservas y preparados de carne,False,millones de quetzales,precios básicos,2013
+38,P038,"Pescado congelado, preparado o en conserva y sus productos",False,millones de quetzales,precios básicos,2013
+39,P039,"Crustáceos, moluscos y demás invertebrados acuáticos congelados, preparados o en conserva y sus productos",False,millones de quetzales,precios básicos,2013
+40,P040,"Vegetales preparados o en conserva, legumbres y papas",False,millones de quetzales,precios básicos,2013
+41,P041,Preparaciones y conservas de frutas y nueces,False,millones de quetzales,precios básicos,2013
+42,P042,Jugos de frutas,False,millones de quetzales,precios básicos,2013
+43,P043,Aceites de origen vegetal,False,millones de quetzales,precios básicos,2013
+44,P044,"Margarina, grasas y otros aceites de origen animal y vegetal",False,millones de quetzales,precios básicos,2013
+45,P045,Leche líquida y crema procesada,False,millones de quetzales,precios básicos,2013
+46,P046,Otros productos lácteos n.c.p.,False,millones de quetzales,precios básicos,2013
+47,P047,Harina de trigo,False,millones de quetzales,precios básicos,2013
+48,P048,Arroz sin cáscara,False,millones de quetzales,precios básicos,2013
+49,P049,"Otros productos de molinería, almidones y productos de almidón",False,millones de quetzales,precios básicos,2013
+50,P050,Pan y otros productos de panadería y repostería n.c.p.,False,millones de quetzales,precios básicos,2013
+51,P051,"Tortillas de maíz, incluso tostadas, horneadas o fritas",False,millones de quetzales,precios básicos,2013
+52,P052,"Azúcar de caña sin refinar y refinada, melaza y los demás azúcares n.c.p.",False,millones de quetzales,precios básicos,2013
+53,P053,Productos alimenticios n.c.p.,False,millones de quetzales,precios básicos,2013
+54,P054,Preparados para alimentación animal,False,millones de quetzales,precios básicos,2013
+55,P055,"Aguardientes, licores, vinos, demás bebidas espirituosas y productos del tabaco",False,millones de quetzales,precios básicos,2013
+56,P056,Malta y cerveza de malta,False,millones de quetzales,precios básicos,2013
+57,P057,Bebidas no alcohólicas,False,millones de quetzales,precios básicos,2013
+58,P058,Aguas minerales y otras aguas embotelladas,False,millones de quetzales,precios básicos,2013
+59,P059,"Hilados, tejidos, telas y otros productos textiles excepto prendas de vestir",False,millones de quetzales,precios básicos,2013
+60,P060,"Prendas de vestir, adobo y teñido de pieles",False,millones de quetzales,precios básicos,2013
+61,P061,Cuero de piel curtida o adobada y cuero artificial o regenerado y artículos de cuero,False,millones de quetzales,precios básicos,2013
+62,P062,"Calzado y sus partes, de cualquier material y de cualquier uso",False,millones de quetzales,precios básicos,2013
+63,P063,"Madera aserrada y acepillada, productos de madera, corcho, paja y materiales trenzables",False,millones de quetzales,precios básicos,2013
+64,P064,Pasta de papel y papel,False,millones de quetzales,precios básicos,2013
+65,P065,Envases de papel y cartón,False,millones de quetzales,precios básicos,2013
+66,P066,Productos de la edición,False,millones de quetzales,precios básicos,2013
+67,P067,Productos de la impresión,False,millones de quetzales,precios básicos,2013
+68,P068,"Gasolinas, diésel oil y fuel oils",False,millones de quetzales,precios básicos,2013
+69,P069,"Aceites, grasas lubricantes y otros aceites preparados",True,millones de quetzales,precios básicos,2013
+70,P070,"Gases de petróleo, otros productos de la refinación de petróleo n.c.p.",False,millones de quetzales,precios básicos,2013
+71,P071,"Abonos, fertilizantes y pesticidas",False,millones de quetzales,precios básicos,2013
+72,P072,"Pinturas, barnices, tintas y productos relacionados",False,millones de quetzales,precios básicos,2013
+73,P073,"Jabón, preparados de limpieza, perfumes y preparados de toilet",False,millones de quetzales,precios básicos,2013
+74,P074,Otros productos químicos,False,millones de quetzales,precios básicos,2013
+75,P075,Productos farmacéuticos,False,millones de quetzales,precios básicos,2013
+76,P076,Productos de caucho y plástico,False,millones de quetzales,precios básicos,2013
+77,P077,Vidrio y productos de vidrio,False,millones de quetzales,precios básicos,2013
+78,P078,Productos de cerámica y arcilla,False,millones de quetzales,precios básicos,2013
+79,P079,"Cemento, cal y yeso",False,millones de quetzales,precios básicos,2013
+80,P080,"Artículos de hormigón, cemento y yeso",False,millones de quetzales,precios básicos,2013
+81,P081,Piedras talladas para construcción y otros productos minerales no metálicos n.c.p.,False,millones de quetzales,precios básicos,2013
+82,P082,"Métales básicos de hierro y acero, productos primarios de metales preciosos y otros metales no ferrosos",False,millones de quetzales,precios básicos,2013
+83,P083,Productos metálicos estructurales y sus partes de hierro o de acero,False,millones de quetzales,precios básicos,2013
+84,P084,Otros productos elaborados de metal,False,millones de quetzales,precios básicos,2013
+85,P085,"Maquinaria para usos generales y especiales, sus partes y piezas, excepto electrodomésticos",False,millones de quetzales,precios básicos,2013
+86,P086,Electrodomésticos y sus partes,True,millones de quetzales,precios básicos,2013
+87,P087,"Maquinaria de oficina, contabilidad e informática, sus partes y piezas",True,millones de quetzales,precios básicos,2013
+88,P088,"Maquinaria y aparatos eléctricos, sus partes y piezas",False,millones de quetzales,precios básicos,2013
+89,P089,"Equipo y aparatos de radio, televisión y comunicaciones",True,millones de quetzales,precios básicos,2013
+90,P090,"Aparatos médicos, instrumentos ópticos y de precisión, relojes",False,millones de quetzales,precios básicos,2013
+91,P091,Equipo de transporte,False,millones de quetzales,precios básicos,2013
+92,P092,Muebles,False,millones de quetzales,precios básicos,2013
+93,P093,Otros artículos n.c.p.,False,millones de quetzales,precios básicos,2013
+94,P094,Residuos y desechos,False,millones de quetzales,precios básicos,2013
+95,P095,"Generación y distribución de energía eléctrica, gas, vapor y aire acondicionado",False,millones de quetzales,precios básicos,2013
+96,P096,Agua natural y distribución de agua natural,False,millones de quetzales,precios básicos,2013
+97,P097,"Evacuación de aguas residuales, recogida, tratamiento y eliminación de desechos",False,millones de quetzales,precios básicos,2013
+98,P098,Edificaciones residenciales,False,millones de quetzales,precios básicos,2013
+99,P099,Edificaciones no residenciales,False,millones de quetzales,precios básicos,2013
+100,P100,Obras de ingeniería civil,False,millones de quetzales,precios básicos,2013
+101,P101,Servicios generales y especializados de construcción,False,millones de quetzales,precios básicos,2013
+102,P102,Servicios de comercio,False,millones de quetzales,precios básicos,2013
+103,P103,Mantenimiento y reparación de vehículos automotores y motocicletas,False,millones de quetzales,precios básicos,2013
+104,P104,Servicio de transporte de pasajeros por vía terrestre,False,millones de quetzales,precios básicos,2013
+105,P105,Servicio de transporte de carga por vía terrestre,False,millones de quetzales,precios básicos,2013
+106,P106,Otros tipos de transporte,False,millones de quetzales,precios básicos,2013
+107,P107,Servicios de almacenamiento y depósito,False,millones de quetzales,precios básicos,2013
+108,P108,Otros servicios de apoyo al transporte,False,millones de quetzales,precios básicos,2013
+109,P109,Servicios postales y de mensajería,False,millones de quetzales,precios básicos,2013
+110,P110,Servicio de alojamiento,False,millones de quetzales,precios básicos,2013
+111,P111,Servicio de suministro de comidas y bebidas,False,millones de quetzales,precios básicos,2013
+112,P112,"Servicios de información, telecomunicaciones y radiodifusión",False,millones de quetzales,precios básicos,2013
+113,P113,Servicios de banco central,False,millones de quetzales,precios básicos,2013
+114,P114,Otros servicios financieros y servicios de banca de inversión,False,millones de quetzales,precios básicos,2013
+115,P115,Servicios de Intermediación Financiera Medidos Indirectamente (SIFMI),False,millones de quetzales,precios básicos,2013
+116,P116,"Servicios de seguro, reaseguro y fondos de pensiones",False,millones de quetzales,precios básicos,2013
+117,P117,Servicios auxiliares de la intermediación financiera,False,millones de quetzales,precios básicos,2013
+118,P118,Servicios de alquiler de vivienda,False,millones de quetzales,precios básicos,2013
+119,P119,"Otros servicios inmobiliarios, excepto alquiler de vivienda",False,millones de quetzales,precios básicos,2013
+120,P120,"Servicios jurídicos, de contabilidad, auditoría, teneduría de libros y consultoría fiscal",False,millones de quetzales,precios básicos,2013
+121,P121,Servicios de tecnología de la información,False,millones de quetzales,precios básicos,2013
+122,P122,"Servicios de arquitectura e ingeniería, ensayos y análisis técnicos",False,millones de quetzales,precios básicos,2013
+123,P123,"Otros servicios profesionales, científicos y técnicos",False,millones de quetzales,precios básicos,2013
+124,P124,Servicios de publicidad y estudios de mercado,False,millones de quetzales,precios básicos,2013
+125,P125,Servicios de arrendamiento o alquiler sin operador,False,millones de quetzales,precios básicos,2013
+126,P126,Servicios  de agencias de empleo y de dotación de recursos humanos,False,millones de quetzales,precios básicos,2013
+127,P127,"Servicios de agencias de viajes, operadores turísticos y actividades conexas",False,millones de quetzales,precios básicos,2013
+128,P128,"Servicios de seguridad, sistemas de seguridad e investigación privada",False,millones de quetzales,precios básicos,2013
+129,P129,Servicios de limpieza,False,millones de quetzales,precios básicos,2013
+130,P130,Servicios telefónicos de centros de llamadas,False,millones de quetzales,precios básicos,2013
+131,P131,"Servicios administrativos, de apoyo de oficina y otros servicios de apoyo a las empresas",False,millones de quetzales,precios básicos,2013
+132,P132,"Servicios de mantenimiento, reparación e instalación de productos metálicos elaborados, maquinaria y equipo",False,millones de quetzales,precios básicos,2013
+133,P133,Servicios de reparación de otros bienes,False,millones de quetzales,precios básicos,2013
+134,P134,"Servicios de apoyo a la agricultura, caza, silvicultura y pesca",False,millones de quetzales,precios básicos,2013
+135,P135,"Servicios de apoyo a la explotación de minas y canteras y los relacionados con la distribución de electricidad, gas y agua",False,millones de quetzales,precios básicos,2013
+136,P136,Servicios de manufactura,False,millones de quetzales,precios básicos,2013
+137,P137,Servicios públicos del gobierno general,False,millones de quetzales,precios básicos,2013
+138,P138,"Servicios públicos administrativos relacionados con la provisión de servicios educativos, de salud, servicios sociales, culturales y otros, sin contar los servicios de seguridad social",False,millones de quetzales,precios básicos,2013
+139,P139,Otros servicios administrativos,False,millones de quetzales,precios básicos,2013
+140,P140,Servicios públicos administrativos prestados a la comunidad en su conjunto,False,millones de quetzales,precios básicos,2013
+141,P141,Servicios administrativos relacionados con los sistemas de seguridad social de afiliación obligatoria,False,millones de quetzales,precios básicos,2013
+142,P142,Servicios de enseñanza,False,millones de quetzales,precios básicos,2013
+143,P143,Servicios de hospitalización,False,millones de quetzales,precios básicos,2013
+144,P144,Servicios médicos y dentales,False,millones de quetzales,precios básicos,2013
+145,P145,Otros servicios de atención de la salud humana,False,millones de quetzales,precios básicos,2013
+146,P146,"Servicios audiovisuales, recreativos, culturales y deportivos",False,millones de quetzales,precios básicos,2013
+147,P147,Servicios de asociaciones que sirven a las empresas,False,millones de quetzales,precios básicos,2013
+148,P148,Servicios de asociaciones que sirven a los hogares,False,millones de quetzales,precios básicos,2013
+149,P149,Otros servicios,False,millones de quetzales,precios básicos,2013
+150,P150,Servicios domésticos,False,millones de quetzales,precios básicos,2013
+151,P151,Compras directas en el exterior por residentes,True,millones de quetzales,precios básicos,2013
+152,P152,Compras directas en el territorio nacional por no residentes,True,millones de quetzales,precios básicos,2013

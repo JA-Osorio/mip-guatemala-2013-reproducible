@@ -1,0 +1,36 @@
+archivo_o_grupo,variable,definicion,tipo,unidad_o_dominio,origen_o_calculo
+todos,codigo,Código de producto NPG,texto,P001-P152,Fuente
+todos,producto,Denominación oficial del producto,texto,NPG,Fuente
+matrices/Z_domestica_2013.csv,P001-P152 por columna,Transacción intermedia doméstica del producto fila al producto columna,numérico,millones de quetzales,MIP_152x152
+matrices/Z_importada_2013.csv,P001-P152 por columna,Utilización intermedia importada del producto fila por el producto columna,numérico,millones de quetzales,M152x152
+matrices/A_domestica_2013.csv,P001-P152 por columna,Coeficiente técnico doméstico,numérico,quetzales por quetzal,Z doméstica dividida por producción de columna
+matrices/A_importada_2013.csv,P001-P152 por columna,Coeficiente técnico importado,numérico,quetzales por quetzal,Z importada dividida por producción de columna
+matrices/A_total_insumos_2013.csv,P001-P152 por columna,Coeficiente de insumos domésticos más importados,numérico,quetzales por quetzal,A doméstica más A importada
+matrices/Leontief_domestica_2013.csv,P001-P152 por columna,Requisito directo e indirecto de producción doméstica,numérico,quetzales por quetzal,(I-A doméstica)^-1
+productos_2013.csv,orden,Posición del producto en la matriz,entero,1-152,Derivado
+productos_2013.csv,produccion_cero,Indicador de producción publicada igual a cero,booleano,verdadero/falso,Producción
+vectores/demanda_final_*.csv,exportaciones_fob,Exportaciones a valor FOB,numérico,millones de quetzales,Fuente
+vectores/demanda_final_*.csv,consumo_hogares,Gasto de consumo final de hogares,numérico,millones de quetzales,Fuente
+vectores/demanda_final_*.csv,consumo_isflsh,Consumo de instituciones sin fines de lucro que sirven a hogares,numérico,millones de quetzales,Fuente
+vectores/demanda_final_*.csv,consumo_gobierno,Gasto de consumo final del gobierno general,numérico,millones de quetzales,Fuente
+vectores/demanda_final_*.csv,formacion_bruta_capital_fijo,Formación bruta de capital fijo,numérico,millones de quetzales,Fuente
+vectores/demanda_final_*.csv,variacion_existencias,Variación de existencias,numérico,millones de quetzales,Fuente
+vectores/demanda_final_*.csv,ajuste_cif_fob_publicado,Ajuste CIF/FOB con el signo mostrado,numérico,millones de quetzales,Fuente
+vectores/demanda_final_*.csv,ajuste_cif_fob_aplicado,Ajuste usado para reproducir el total,numérico,millones de quetzales,-1 por ajuste publicado
+vectores/demanda_final_*.csv,total_componentes_no_solapados,Suma de componentes excluyendo subtotales y restando ajuste CIF/FOB,numérico,millones de quetzales,Derivado
+vectores/demanda_final_domestica_2013.csv,ajuste_balance_produccion_utilizacion,Diferencia entre producción y utilización publicadas,numérico,millones de quetzales,Producción menos utilización
+vectores/demanda_final_domestica_2013.csv,demanda_final_balanceada,Demanda final coherente exactamente con producción,numérico,millones de quetzales,Producción menos suma fila Z doméstica
+vectores/produccion_y_utilizacion_2013.csv,produccion_precios_basicos,Producción del producto,numérico,millones de quetzales,Fuente
+vectores/produccion_y_utilizacion_2013.csv,total_utilizacion_precios_basicos,Utilización doméstica total publicada,numérico,millones de quetzales,Fuente
+vectores/produccion_y_utilizacion_2013.csv,producto_interno_bruto,Producto interno bruto asignado al producto,numérico,millones de quetzales,Fuente
+vectores/produccion_y_utilizacion_2013.csv,puestos_trabajo,Puestos de trabajo,numérico,puestos,Fuente
+vectores/cuentas_primarias_2013.csv,impuestos_netos_sobre_productos,Impuestos menos subvenciones sobre productos,numérico,millones de quetzales,Fuente
+vectores/cuentas_primarias_2013.csv,valor_agregado_bruto_oficial,Valor agregado bruto publicado,numérico,millones de quetzales,Fuente
+vectores/cuentas_primarias_2013.csv,residuo_identidad_columna,Diferencia de la identidad de costos,numérico,millones de quetzales,Producción menos suma de costos
+vectores/componentes_valor_agregado_2013.csv,remuneracion_asalariados,Remuneración de asalariados,numérico,millones de quetzales,Fuente
+vectores/componentes_valor_agregado_2013.csv,impuestos_produccion_importaciones,Impuestos sobre producción e importaciones,numérico,millones de quetzales,Fuente
+vectores/componentes_valor_agregado_2013.csv,subvenciones_produccion,Subvenciones sobre producción con signo de fuente,numérico,millones de quetzales,Fuente
+vectores/componentes_valor_agregado_2013.csv,excedente_explotacion_bruto,Excedente de explotación bruto,numérico,millones de quetzales,Fuente
+vectores/componentes_valor_agregado_2013.csv,ingreso_mixto_bruto,Ingreso mixto bruto,numérico,millones de quetzales,Fuente
+05_verificacion/controles_reproduccion.csv,status,Resultado del control,texto,APROBADO/ADVERTENCIA/FALLÓ,Validación automática
+

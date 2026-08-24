@@ -1,0 +1,25 @@
+{
+  "condition_number_i_minus_a": 2.9810389787870717,
+  "currency_unit": "millones de quetzales",
+  "generated_at_utc": "2026-08-24T17:35:28.539326+00:00",
+  "inverse_residual_max_abs": 1.3322676295501878e-15,
+  "mandatory_controls_passed": true,
+  "products": 152,
+  "source_file_name": "MIP_AR2013_NPG.xlsx",
+  "source_sha256": "44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2",
+  "spectral_radius_a_domestic": 0.39061585451264397,
+  "title": "Matriz insumo-producto producto por producto de Guatemala 2013 — paquete reproducible",
+  "total_output_million_quetzales": 694946.5673502104,
+  "total_value_added_million_quetzales": 392018.15492916724,
+  "valuation": "precios básicos",
+  "version": "0.1.0",
+  "year": 2013,
+  "zero_output_products": [
+    "P069",
+    "P086",
+    "P087",
+    "P089",
+    "P151",
+    "P152"
+  ]
+}
