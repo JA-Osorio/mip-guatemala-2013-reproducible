@@ -1,0 +1,30 @@
+CRÉDITOS — VERSIÓN DE TRABAJO 0.1.0
+
+MIP Guatemala 2013 reproducible
+
+AUTORÍA
+
+Juan Alejandro Osorio
+Universidad Rafael Landívar
+ORCID: 0009-0001-4260-772X
+Contacto: jaosorio@url.edu.gt
+
+Patricia Villatoro
+Universidad Rafael Landívar
+ORCID: 0000-0002-5109-2393
+
+Noe Salguero
+Universidad Rafael Landívar
+ORCID: 0009-0004-5017-6538
+
+La autoría y su orden reflejan el equipo indicado para esta línea de
+investigación. La asignación detallada de roles CRediT debe ser revisada y
+ratificada por las tres personas antes del lanzamiento 1.0.0 y del depósito en
+Zenodo; no se trasladan automáticamente roles declarados en otros proyectos.
+
+FUENTE INSTITUCIONAL
+
+Banco de Guatemala: matriz insumo-producto producto por producto de Guatemala,
+año de referencia 2013. La transformación reproducible no implica aval del
+organismo productor.
+

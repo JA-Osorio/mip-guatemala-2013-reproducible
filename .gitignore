@@ -1,0 +1,19 @@
+# Fuente primaria no redistribuida
+00_trazabilidad_fuentes/fuentes_originales_no_redistribuidas/*
+!00_trazabilidad_fuentes/fuentes_originales_no_redistribuidas/.gitkeep
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Temporales y sistema
+.DS_Store
+~$*.xlsx
+*.tmp
+
+# Renderizados de control locales
+03_modelo_hoja_calculo/_rendered/
+
