@@ -165,6 +165,19 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertEqual(citation.count("family-names:"), 1)
         self.assertIn('family-names: "Osorio"', citation)
 
+    def test_doi_consistente(self) -> None:
+        doi = "10.5281/zenodo.22086008"
+        citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+        codemeta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
+        metadata = json.loads(
+            (RESULTS / "metadatos_dataset.json").read_text(encoding="utf-8")
+        )
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        self.assertIn(f'doi: "{doi}"', citation)
+        self.assertEqual(codemeta["identifier"], f"https://doi.org/{doi}")
+        self.assertEqual(metadata["doi"], doi)
+        self.assertIn(f"https://doi.org/{doi}", readme)
+
 
 @unittest.skipUnless(SOURCE.exists(), "La fuente primaria no se distribuye en GitHub")
 class FuenteLocalTests(unittest.TestCase):

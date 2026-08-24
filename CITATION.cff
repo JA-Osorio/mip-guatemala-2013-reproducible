@@ -10,6 +10,7 @@ authors:
     email: "jaosorio@url.edu.gt"
 version: 1.0.0
 date-released: 2026-08-24
+doi: "10.5281/zenodo.22086008"
 abstract: >-
   Paquete reproducible para extraer, documentar y validar la matriz
   insumo-producto producto por producto de Guatemala 2013. Separa matrices
@@ -23,4 +24,4 @@ keywords:
   - "reproducibilidad"
 license: CC-BY-4.0
 repository-code: "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible"
-url: "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible"
+url: "https://doi.org/10.5281/zenodo.22086008"

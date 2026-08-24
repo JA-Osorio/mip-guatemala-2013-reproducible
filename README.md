@@ -1,6 +1,7 @@
 # MIP Guatemala 2013 reproducible
 
 [![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22086008.svg)](https://doi.org/10.5281/zenodo.22086008)
 
 Base analítica, documentada y reproducible para trabajar con la matriz insumo-producto (MIP) producto por producto de Guatemala para 2013, publicada por el Banco de Guatemala.
 
@@ -162,3 +163,9 @@ Se comparó `Z_domestica_2013.csv` con dos libros históricos proporcionados por
 Autor: Juan Alejandro Osorio.
 
 Los datos derivados y la documentación se distribuyen bajo CC BY 4.0; el código original y las celdas ejecutables del cuaderno, bajo MIT. Las fuentes primarias y los materiales de terceros conservan sus condiciones de origen.
+
+## Citación
+
+Osorio, Juan Alejandro (2026). *MIP Guatemala 2013 reproducible* (versión 1.0.0) [Conjunto de datos y código]. Zenodo. https://doi.org/10.5281/zenodo.22086008
+
+Los metadatos legibles por gestores bibliográficos también están disponibles en `CITATION.cff` y `codemeta.json`.

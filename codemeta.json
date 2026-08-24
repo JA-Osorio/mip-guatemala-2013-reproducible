@@ -4,6 +4,7 @@
   "name": "Código para reproducir la MIP producto por producto de Guatemala 2013",
   "description": "Código Python para extraer, transformar, validar y publicar matrices y vectores derivados de la MIP producto por producto de Guatemala 2013.",
   "version": "1.0.0",
+  "identifier": "https://doi.org/10.5281/zenodo.22086008",
   "author": [
     {
       "type": "Person",
