@@ -1,0 +1,65 @@
+NOTA TÉCNICA 00 — CONVERSIÓN DE LA MIP PRODUCTO POR PRODUCTO 2013
+
+1. OBJETIVO
+
+Convertir el libro institucional de la MIP 2013 en archivos abiertos,
+documentados y reproducibles, preservando la separación por origen y las
+identidades contables publicadas.
+
+2. UNIDAD Y VALORACIÓN
+
+Año de referencia: 2013.
+Unidad monetaria: millones de quetzales.
+Valoración: precios básicos.
+Cobertura: 152 productos de la nomenclatura de productos de Guatemala (NPG).
+
+3. BLOQUES EXTRAÍDOS
+
+Z doméstica: utilización intermedia de productos de origen nacional.
+Z importada: utilización intermedia de productos importados.
+Demanda final: exportaciones, consumo de hogares, consumo de ISFLSH, consumo
+de gobierno, formación bruta de capital fijo, variación de existencias y
+ajuste CIF/FOB.
+Cuentas primarias: impuestos y subvenciones sobre productos, VAB, producción,
+componentes del VAB y puestos de trabajo.
+
+Los subtotales de consumo final y formación bruta de capital no se suman a sus
+componentes. La columna CIF/FOB se conserva tal como se publica y se resta al
+reconstruir el total, siguiendo la fórmula implícita de la fuente.
+
+4. IDENTIDADES
+
+Por fila doméstica:
+
+  utilización = suma_fila(Z doméstica) + demanda final publicada
+
+La fuente presenta pequeñas diferencias de redondeo entre producción y
+utilización. Se exportan dos vectores:
+
+  demanda_final_fuente = utilización - suma_fila(Z doméstica)
+  demanda_final_balanceada = producción - suma_fila(Z doméstica)
+
+La diferencia entre ambos es exactamente el ajuste explícito de
+producción–utilización; no se distribuye proporcionalmente.
+
+Por columna:
+
+  producción = insumos domésticos + insumos importados
+             + impuestos netos sobre productos + VAB
+
+5. DECISIONES DE CALIDAD
+
+- La fuente se lee por rangos definidos en YAML, no por posiciones detectadas
+  heurísticamente.
+- Los códigos de filas y columnas deben coincidir y cubrir P001-P152.
+- El VAB oficial se extrae de la fila publicada; no se sustituye por un residuo.
+- Las subvenciones conservan el signo de la fuente.
+- Todos los derivados incluyen código y denominación del producto.
+- El script se detiene si falla un control obligatorio.
+
+6. NO INCLUIDO
+
+No se actualiza la estructura a años posteriores, no se desagrega P068 y no se
+construyen escenarios de política. Esas operaciones corresponden a repositorios
+de aplicación que deben citar esta base y declarar sus supuestos adicionales.
+

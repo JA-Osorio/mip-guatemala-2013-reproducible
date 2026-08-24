@@ -1,0 +1,39 @@
+NOTA TÉCNICA 01 — ESPECIFICACIÓN DEL MODELO DE LEONTIEF
+
+Sean:
+
+  Z_d  matriz de transacciones intermedias domésticas, 152 x 152;
+  Z_m  matriz de utilización intermedia importada, 152 x 152;
+  x    vector de producción a precios básicos;
+  y_d  vector de demanda final doméstica balanceada;
+  D_x  matriz diagonal construida con x.
+
+Los coeficientes por columna son:
+
+  A_d = Z_d D_x^(-1)
+  A_m = Z_m D_x^(-1)
+
+Cuando x_j = 0, la columna j de ambas Z es nula y los coeficientes se definen
+como cero. Esta convención evita divisiones indefinidas y no crea producción.
+
+El sistema doméstico de cantidades es:
+
+  x = A_d x + y_d
+  x = (I - A_d)^(-1) y_d
+  L_d = (I - A_d)^(-1)
+
+Se usa A_d —no A_d + A_m— porque el producto de L_d representa producción
+doméstica requerida. Los insumos importados son fugas del circuito doméstico.
+A_m se publica para estimar requisitos importados o construir modelos de
+precios con una interpretación explícita.
+
+Controles matemáticos de la versión 0.1.0:
+
+  radio espectral de A_d = 0.390615854513 < 1
+  número de condición de I - A_d = 2.981038978787
+  max abs[(I - A_d)L_d - I] = 1.332267629550e-15
+
+Supuestos principales: homogeneidad por producto, proporcionalidad estricta,
+coeficientes fijos, precios relativos fijos, capacidad suficiente y ausencia
+de sustitución endógena. Los resultados son comparativos estáticos.
+
