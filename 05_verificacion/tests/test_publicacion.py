@@ -109,9 +109,61 @@ class PublicacionDerivadaTests(unittest.TestCase):
 
     def test_metadatos(self) -> None:
         metadata = json.loads((RESULTS / "metadatos_dataset.json").read_text("utf-8"))
+        self.assertEqual(metadata["version"], "1.0.0")
         self.assertEqual(metadata["products"], 152)
         self.assertTrue(metadata["mandatory_controls_passed"])
         self.assertLess(metadata["spectral_radius_a_domestic"], 1.0)
+
+    def test_alcance_y_acceso_colab(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        notebook = (
+            ROOT / "04_reproduccion_python" / "cuaderno_exploracion_mip_2013.ipynb"
+        ).read_text(encoding="utf-8")
+        self.assertIn(
+            "El alcance es exclusivamente estadístico y computacional", readme
+        )
+        colab_url = (
+            "https://colab.research.google.com/github/JA-Osorio/"
+            "mip-guatemala-2013-reproducible/blob/main/"
+            "04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb"
+        )
+        self.assertIn(colab_url, readme)
+        self.assertIn(colab_url, notebook)
+
+    def test_indicadores_io(self) -> None:
+        indicators = pd.read_csv(RESULTS / "indicadores_io_2013.csv")
+        self.assertEqual(len(indicators), 152)
+        self.assertEqual(indicators["codigo"].tolist(), self.products["codigo"].tolist())
+        expected_output_multiplier = self.leontief.sum(axis=0)
+        expected_total_import = (self.a_imp @ self.leontief).sum(axis=0)
+        np.testing.assert_allclose(
+            indicators["multiplicador_produccion_domestica"],
+            expected_output_multiplier,
+            rtol=1e-12,
+            atol=1e-12,
+        )
+        np.testing.assert_allclose(
+            indicators["requerimiento_importacion_total"],
+            expected_total_import,
+            rtol=1e-12,
+            atol=1e-12,
+        )
+        self.assertAlmostEqual(
+            indicators["encadenamiento_atras_normalizado"].mean(), 1.0, places=12
+        )
+        self.assertAlmostEqual(
+            indicators["encadenamiento_adelante_normalizado"].mean(), 1.0, places=12
+        )
+
+    def test_autoria_unica(self) -> None:
+        zenodo = json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
+        self.assertEqual(
+            [creator["name"] for creator in zenodo["creators"]],
+            ["Osorio, Juan Alejandro"],
+        )
+        citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+        self.assertEqual(citation.count("family-names:"), 1)
+        self.assertIn('family-names: "Osorio"', citation)
 
 
 @unittest.skipUnless(SOURCE.exists(), "La fuente primaria no se distribuye en GitHub")

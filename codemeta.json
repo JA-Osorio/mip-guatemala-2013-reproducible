@@ -3,7 +3,7 @@
   "type": "SoftwareSourceCode",
   "name": "Código para reproducir la MIP producto por producto de Guatemala 2013",
   "description": "Código Python para extraer, transformar, validar y publicar matrices y vectores derivados de la MIP producto por producto de Guatemala 2013.",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": [
     {
       "type": "Person",
@@ -11,24 +11,12 @@
       "familyName": "Osorio",
       "id": "https://orcid.org/0009-0001-4260-772X",
       "position": 1
-    },
-    {
-      "type": "Person",
-      "givenName": "Patricia",
-      "familyName": "Villatoro",
-      "id": "https://orcid.org/0000-0002-5109-2393",
-      "position": 2
-    },
-    {
-      "type": "Person",
-      "givenName": "Noe",
-      "familyName": "Salguero",
-      "id": "https://orcid.org/0009-0004-5017-6538",
-      "position": 3
     }
   ],
   "programmingLanguage": "Python",
   "runtimePlatform": "Python 3.10 or later",
+  "codeRepository": "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible",
+  "issueTracker": "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/issues",
   "schema:inLanguage": "es",
   "applicationCategory": "Input-output analysis",
   "operatingSystem": "Platform independent",
@@ -40,4 +28,3 @@
     "reproducibilidad"
   ]
 }
-

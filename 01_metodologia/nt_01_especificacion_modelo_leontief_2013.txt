@@ -27,7 +27,7 @@ doméstica requerida. Los insumos importados son fugas del circuito doméstico.
 A_m se publica para estimar requisitos importados o construir modelos de
 precios con una interpretación explícita.
 
-Controles matemáticos de la versión 0.1.0:
+Controles matemáticos de la versión 1.0.0:
 
   radio espectral de A_d = 0.390615854513 < 1
   número de condición de I - A_d = 2.981038978787
@@ -36,4 +36,3 @@ Controles matemáticos de la versión 0.1.0:
 Supuestos principales: homogeneidad por producto, proporcionalidad estricta,
 coeficientes fijos, precios relativos fijos, capacidad suficiente y ausencia
 de sustitución endógena. Los resultados son comparativos estáticos.
-

@@ -9,6 +9,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
+from .analysis import io_indicator_frame, safe_coefficient
 from .models import ControlResult, MipSystem
 
 
@@ -230,6 +231,18 @@ def export_outputs(system: MipSystem, root: Path, controls: list[ControlResult])
     _write_csv(coefficients_frame, coefficients_path)
     written.append(coefficients_path)
 
+    indicators_frame = io_indicator_frame(
+        codes=source.codes,
+        labels=source.labels,
+        a_imported=system.a_imported,
+        leontief_domestic=system.leontief_domestic,
+        value_added_coefficients=system.primary_coefficients["valor_agregado_bruto"],
+        employment_coefficients=safe_coefficient(source.jobs, source.output),
+    )
+    indicators_path = results / "indicadores_io_2013.csv"
+    _write_csv(indicators_frame, indicators_path)
+    written.append(indicators_path)
+
     transactions_path = long_data / "transacciones_intermedias_2013.csv"
     _write_csv(_transactions_long(system), transactions_path)
     written.append(transactions_path)
@@ -268,7 +281,7 @@ def export_outputs(system: MipSystem, root: Path, controls: list[ControlResult])
 
     metadata = {
         "title": "Matriz insumo-producto producto por producto de Guatemala 2013 — paquete reproducible",
-        "version": "0.1.0",
+        "version": "1.0.0",
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "source_file_name": source.source_path.name,
         "source_sha256": source.source_sha256,

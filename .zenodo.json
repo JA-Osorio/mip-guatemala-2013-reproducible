@@ -7,22 +7,19 @@
       "name": "Osorio, Juan Alejandro",
       "orcid": "0009-0001-4260-772X",
       "affiliation": "Universidad Rafael Landívar"
-    },
-    {
-      "name": "Villatoro, Patricia",
-      "orcid": "0000-0002-5109-2393",
-      "affiliation": "Universidad Rafael Landívar"
-    },
-    {
-      "name": "Salguero, Noe",
-      "orcid": "0009-0004-5017-6538",
-      "affiliation": "Universidad Rafael Landívar"
     }
   ],
-  "version": "0.1.0",
+  "version": "1.0.0",
   "language": "spa",
   "access_right": "open",
   "license": "cc-by-4.0",
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
   "keywords": [
     "matriz insumo-producto",
     "Leontief",
@@ -30,6 +27,5 @@
     "cuentas nacionales",
     "reproducibilidad"
   ],
-  "notes": "Versión de trabajo previa a publicación. Los datos derivados y la documentación se rigen por CC BY 4.0; el código original por MIT. Las fuentes primarias no forman parte de la distribución pública."
+  "notes": "Los datos derivados y la documentación se rigen por CC BY 4.0; el código original por MIT. Las fuentes primarias no forman parte de la distribución pública."
 }
-
