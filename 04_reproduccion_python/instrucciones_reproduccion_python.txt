@@ -1,0 +1,30 @@
+REPRODUCCIÓN EN PYTHON
+
+Requisitos: Python 3.10 o posterior.
+
+1. Instalar dependencias desde la raíz:
+
+   python -m pip install -e .
+
+2. Colocar la fuente según
+   00_trazabilidad_fuentes/instrucciones_fuente_original.txt, o indicar una
+   ruta segura con --fuente.
+
+3. Ejecutar:
+
+   python 04_reproduccion_python/reproducir_mip_guatemala_2013.py
+
+4. Revisar:
+
+   05_verificacion/informe_reproduccion_computacional_mip_2013.txt
+   05_verificacion/controles_reproduccion.csv
+   manifiesto_archivos.txt
+
+5. Ejecutar pruebas independientes:
+
+   python -m unittest discover -s 05_verificacion/tests -v
+
+El archivo config_mip.yaml contiene los rangos y tolerancias. Cualquier cambio
+en la estructura de la fuente debe documentarse allí y acompañarse de una
+nueva versión del repositorio.
+

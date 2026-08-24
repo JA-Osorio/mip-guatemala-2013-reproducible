@@ -1,0 +1,51 @@
+project:
+  title: "Matriz insumo-producto producto por producto de Guatemala 2013 — paquete reproducible"
+  version: "0.1.0"
+  year: 2013
+  valuation: "precios básicos"
+  currency_unit: "millones de quetzales"
+
+source:
+  path: "00_trazabilidad_fuentes/fuentes_originales_no_redistribuidas/MIP_AR2013_NPG.xlsx"
+  expected_sha256: "44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2"
+
+source_layout:
+  sheet_domestic: "MIP_152x152"
+  sheet_imported: "M152x152"
+  product_header_row: 11
+  product_first_row: 12
+  product_count: 152
+  code_column: 2
+  label_column: 3
+  matrix_first_column: 4
+  total_intermediate_column: 156
+  exports_column: 157
+  households_column: 158
+  npish_column: 159
+  government_column: 160
+  total_consumption_column: 161
+  gfcf_column: 162
+  inventories_column: 163
+  total_capital_column: 164
+  cif_fob_column: 165
+  total_utilization_column: 166
+  row_domestic_intermediate: 164
+  row_imported_intermediate: 167
+  row_taxes_products: 168
+  row_subsidies_products: 169
+  row_net_taxes_products: 170
+  row_value_added: 172
+  row_output: 173
+  row_gdp: 174
+  row_value_added_components: 176
+  row_compensation: 177
+  row_taxes_production_imports: 178
+  row_subsidies_production: 179
+  row_operating_surplus: 180
+  row_mixed_income: 181
+  row_jobs: 183
+
+validation:
+  numeric_tolerance: 1.0e-8
+  source_balance_tolerance: 0.20
+
