@@ -1,5 +1,7 @@
 MIP GUATEMALA 2013 REPRODUCIBLE — v1.0.0
 
+DOI: https://doi.org/10.5281/zenodo.22086008
+
 Paquete para extraer, transformar y validar la matriz insumo-producto producto
 por producto de Guatemala 2013. La fuente oficial se mantiene fuera de la
 distribución pública; el script maestro acepta su ruta mediante --fuente.

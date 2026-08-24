@@ -33,7 +33,7 @@ def reproduce(
     )
     assert_mandatory_controls(controls)
 
-    written = export_outputs(system, root, controls)
+    written = export_outputs(system, root, controls, config["project"])
     report_path = root / "05_verificacion" / "informe_reproduccion_computacional_mip_2013.txt"
     write_reproduction_report(system, controls, report_path)
     written.append(report_path)
@@ -49,4 +49,3 @@ def reproduce(
         "report": report_path,
         "manifest": manifest_path,
     }
-

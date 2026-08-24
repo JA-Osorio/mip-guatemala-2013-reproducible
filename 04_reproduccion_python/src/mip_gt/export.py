@@ -5,6 +5,7 @@ import json
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
+from typing import Any
 
 import numpy as np
 import pandas as pd
@@ -28,16 +29,16 @@ def _matrix_frame(system: MipSystem, matrix: np.ndarray) -> pd.DataFrame:
     return frame
 
 
-def _products_frame(system: MipSystem) -> pd.DataFrame:
+def _products_frame(system: MipSystem, project: dict[str, Any]) -> pd.DataFrame:
     return pd.DataFrame(
         {
             "orden": np.arange(1, len(system.source.codes) + 1),
             "codigo": system.source.codes,
             "producto": system.source.labels,
             "produccion_cero": system.source.output == 0,
-            "unidad_monetaria": "millones de quetzales",
-            "precios": "precios básicos",
-            "anio_referencia": 2013,
+            "unidad_monetaria": project["currency_unit"],
+            "precios": project["valuation"],
+            "anio_referencia": project["year"],
         }
     )
 
@@ -118,7 +119,12 @@ def _final_long(system: MipSystem) -> pd.DataFrame:
     return pd.concat(rows, ignore_index=True)
 
 
-def export_outputs(system: MipSystem, root: Path, controls: list[ControlResult]) -> list[Path]:
+def export_outputs(
+    system: MipSystem,
+    root: Path,
+    controls: list[ControlResult],
+    project: dict[str, Any],
+) -> list[Path]:
     results = root / "02_resultados_y_diccionario"
     matrices = results / "matrices"
     vectors = results / "vectores"
@@ -141,7 +147,7 @@ def export_outputs(system: MipSystem, root: Path, controls: list[ControlResult])
         written.append(path)
 
     products_path = results / "productos_2013.csv"
-    _write_csv(_products_frame(system), products_path)
+    _write_csv(_products_frame(system, project), products_path)
     written.append(products_path)
 
     domestic_final_path = vectors / "demanda_final_domestica_2013.csv"
@@ -280,14 +286,15 @@ def export_outputs(system: MipSystem, root: Path, controls: list[ControlResult])
     written.append(balance_path)
 
     metadata = {
-        "title": "Matriz insumo-producto producto por producto de Guatemala 2013 — paquete reproducible",
-        "version": "1.0.0",
+        "title": project["title"],
+        "version": project["version"],
+        "doi": project["doi"],
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "source_file_name": source.source_path.name,
         "source_sha256": source.source_sha256,
-        "year": 2013,
-        "valuation": "precios básicos",
-        "currency_unit": "millones de quetzales",
+        "year": project["year"],
+        "valuation": project["valuation"],
+        "currency_unit": project["currency_unit"],
         "products": len(source.codes),
         "zero_output_products": [
             code for code, value in zip(source.codes, source.output) if value == 0

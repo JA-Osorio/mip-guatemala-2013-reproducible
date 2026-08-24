@@ -8,6 +8,7 @@ Juan Alejandro Osorio
 Universidad Rafael Landívar
 ORCID: 0009-0001-4260-772X
 Contacto: jaosorio@url.edu.gt
+DOI: https://doi.org/10.5281/zenodo.22086008
 
 La autoría corresponde a este producto de datos y código.
 

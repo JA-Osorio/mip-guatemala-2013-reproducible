@@ -5,7 +5,7 @@
 - Publicación estable del conjunto de datos, código, documentación y modelo Excel.
 - Incorporación del acceso directo y la configuración automática para Google Colab.
 - Delimitación del alcance exclusivamente a la conversión reproducible de la MIP 2013.
-- Preparación de metadatos para citación y preservación en Zenodo.
+- Publicación citable en Zenodo con DOI `10.5281/zenodo.22086008`.
 
 ## 0.1.0 — 2026-08-24
 
@@ -17,4 +17,3 @@
 - Incorporación de 22 controles computacionales y 11 pruebas independientes.
 - Comparación de la matriz doméstica con dos construcciones históricas del equipo.
 - Libro Excel auditable y cuaderno de exploración no canónico.
-
