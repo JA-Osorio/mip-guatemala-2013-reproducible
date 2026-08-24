@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Juan Alejandro Osorio, Patricia Villatoro y Noe Salguero
+Copyright (c) 2026 Juan Alejandro Osorio
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -25,4 +25,3 @@ SPDX-License-Identifier: MIT
 This license applies only to original code and executable notebook cells. Data,
 documentation and stored results are governed by LICENSE. Third-party
 dependencies retain their own licenses.
-

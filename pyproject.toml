@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "mip-guatemala-2013-reproducible"
-version = "0.1.0"
+version = "1.0.0"
 description = "Extracción, transformación y validación reproducible de la MIP producto por producto de Guatemala 2013."
 requires-python = ">=3.10"
 dependencies = [
@@ -19,4 +19,3 @@ package-dir = {"" = "04_reproduccion_python/src"}
 
 [tool.setuptools.packages.find]
 where = ["04_reproduccion_python/src"]
-

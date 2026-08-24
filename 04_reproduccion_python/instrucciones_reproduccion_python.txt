@@ -2,6 +2,10 @@ REPRODUCCIÓN EN PYTHON
 
 Requisitos: Python 3.10 o posterior.
 
+Entrada didáctica en Google Colab:
+
+https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb
+
 1. Instalar dependencias desde la raíz:
 
    python -m pip install -e .
@@ -27,4 +31,3 @@ Requisitos: Python 3.10 o posterior.
 El archivo config_mip.yaml contiene los rangos y tolerancias. Cualquier cambio
 en la estructura de la fuente debe documentarse allí y acompañarse de una
 nueva versión del repositorio.
-

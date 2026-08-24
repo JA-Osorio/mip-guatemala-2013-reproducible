@@ -8,15 +8,7 @@ authors:
     orcid: "https://orcid.org/0009-0001-4260-772X"
     affiliation: "Universidad Rafael Landívar"
     email: "jaosorio@url.edu.gt"
-  - family-names: "Villatoro"
-    given-names: "Patricia"
-    orcid: "https://orcid.org/0000-0002-5109-2393"
-    affiliation: "Universidad Rafael Landívar"
-  - family-names: "Salguero"
-    given-names: "Noe"
-    orcid: "https://orcid.org/0009-0004-5017-6538"
-    affiliation: "Universidad Rafael Landívar"
-version: 0.1.0
+version: 1.0.0
 date-released: 2026-08-24
 abstract: >-
   Paquete reproducible para extraer, documentar y validar la matriz
@@ -30,4 +22,5 @@ keywords:
   - "cuentas nacionales"
   - "reproducibilidad"
 license: CC-BY-4.0
-
+repository-code: "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible"
+url: "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible"

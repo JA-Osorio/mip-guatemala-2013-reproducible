@@ -57,9 +57,7 @@ Por columna:
 - Todos los derivados incluyen código y denominación del producto.
 - El script se detiene si falla un control obligatorio.
 
-6. NO INCLUIDO
+6. ALCANCE DE LA CONVERSIÓN
 
-No se actualiza la estructura a años posteriores, no se desagrega P068 y no se
-construyen escenarios de política. Esas operaciones corresponden a repositorios
-de aplicación que deben citar esta base y declarar sus supuestos adicionales.
-
+La conversión reproduce el año de referencia 2013 y conserva la nomenclatura
+publicada de 152 productos.

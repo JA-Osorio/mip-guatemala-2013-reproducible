@@ -1,7 +1,7 @@
 {
   "condition_number_i_minus_a": 2.9810389787870717,
   "currency_unit": "millones de quetzales",
-  "generated_at_utc": "2026-08-24T17:35:28.539326+00:00",
+  "generated_at_utc": "2026-08-24T18:43:45.346519+00:00",
   "inverse_residual_max_abs": 1.3322676295501878e-15,
   "mandatory_controls_passed": true,
   "products": 152,
@@ -12,7 +12,7 @@
   "total_output_million_quetzales": 694946.5673502104,
   "total_value_added_million_quetzales": 392018.15492916724,
   "valuation": "precios básicos",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "year": 2013,
   "zero_output_products": [
     "P069",

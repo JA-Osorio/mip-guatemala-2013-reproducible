@@ -7,7 +7,7 @@ INSTRUCCIONES PARA LA FUENTE ORIGINAL
 
    00_trazabilidad_fuentes/fuentes_originales_no_redistribuidas/
 
-3. Compruebe la huella de la copia utilizada por la versión 0.1.0:
+3. Compruebe la huella de la copia utilizada por la versión 1.0.0:
 
    SHA-256
    44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2
@@ -26,4 +26,3 @@ INSTRUCCIONES PARA LA FUENTE ORIGINAL
 
 No edite celdas, fórmulas, signos ni etiquetas dentro de la fuente. Toda
 transformación debe quedar expresada en código y documentada.
-

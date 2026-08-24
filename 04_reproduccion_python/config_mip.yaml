@@ -1,6 +1,6 @@
 project:
   title: "Matriz insumo-producto producto por producto de Guatemala 2013 — paquete reproducible"
-  version: "0.1.0"
+  version: "1.0.0"
   year: 2013
   valuation: "precios básicos"
   currency_unit: "millones de quetzales"
@@ -48,4 +48,3 @@ source_layout:
 validation:
   numeric_tolerance: 1.0e-8
   source_balance_tolerance: 0.20
-

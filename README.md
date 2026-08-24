@@ -1,20 +1,23 @@
 # MIP Guatemala 2013 reproducible
 
-Conversión, documentación y validación reproducible de la matriz insumo-producto (MIP) producto por producto de Guatemala para 2013, publicada por el Banco de Guatemala.
+[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
+
+Base analítica, documentada y reproducible para trabajar con la matriz insumo-producto (MIP) producto por producto de Guatemala para 2013, publicada por el Banco de Guatemala.
 
 Este repositorio reconstruye una base analítica de 152 productos a precios básicos y en millones de quetzales. Separa explícitamente las transacciones domésticas de las importadas, conserva las cuentas primarias oficiales y produce los coeficientes técnicos y la inversa de Leontief doméstica.
 
-> **Alcance deliberado:** este repositorio no contiene escenarios de etanol, E5, E10 ni proyecciones a 2026. Es la capa de infraestructura estadística que podrá ser consumida, sin duplicarse, por el repositorio independiente de la investigación sobre etanol.
+El alcance es exclusivamente estadístico y computacional: conversión, documentación y validación de la MIP 2013 con la desagregación publicada por la fuente institucional.
 
 ## Resultado validado
 
-La versión 0.1.0 produce y verifica:
+La versión 1.0.0 produce y verifica:
 
 - 152 productos con códigos consecutivos `P001`–`P152`;
 - matriz de transacciones intermedias domésticas `Z_domestica_2013` de 152 × 152;
 - matriz de utilización intermedia importada `Z_importada_2013` de 152 × 152;
 - matrices de coeficientes `A_domestica_2013`, `A_importada_2013` y `A_total_insumos_2013`;
 - inversa de Leontief doméstica `Leontief_domestica_2013`;
+- indicadores IO listos para uso: multiplicadores, encadenamientos, intensidad importada, valor agregado y empleo;
 - demanda final, producción, utilización, impuestos netos y valor agregado bruto oficial;
 - 22 controles computacionales aprobados y ningún fallo obligatorio.
 
@@ -29,6 +32,24 @@ Totales principales de la fuente, en millones de quetzales:
 | Radio espectral de `A_domestica` | 0.390615854513 |
 
 El residuo máximo de `(I - A)L - I` es `1.332e-15`. La mayor diferencia producción–utilización publicada es Q0.19 millones y se conserva en una variable explícita; no se oculta mediante edición manual.
+
+## Cuaderno en Google Colab
+
+El cuaderno carga los resultados publicados, presenta los metadatos y controles y realiza una verificación matricial independiente. Puede ejecutarse sin instalar software local:
+
+[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
+
+## Uso para análisis insumo-producto
+
+Los archivos publicados permiten pasar directamente de la base contable al análisis. Para un cambio de demanda final doméstica `Δf`, el cambio bruto de producción es:
+
+```text
+Δx = Lᵈ Δf
+```
+
+A partir de `Δx` pueden estimarse los requerimientos importados, el valor agregado y los puestos de trabajo asociados mediante sus coeficientes por unidad de producción. `02_resultados_y_diccionario/indicadores_io_2013.csv` entrega indicadores precalculados para los 152 productos y el cuaderno de Colab incluye un choque parametrizable.
+
+La guía [Uso analítico y actualización](01_metodologia/guia_uso_analisis_io_y_actualizacion.md) explica las matrices disponibles, las ecuaciones, un flujo recomendado para nuevas investigaciones y el procedimiento para incorporar una nueva MIP oficial sin sobrescribir la versión 2013.
 
 ## Fuente y trazabilidad
 
@@ -116,7 +137,7 @@ Esta convención evita una diferencia artificial de Q47.975991 millones al compa
 ```text
 00_trazabilidad_fuentes/       fuentes, huellas y rangos
 01_metodologia/                notas metodológicas y ecuaciones
-02_resultados_y_diccionario/   CSV derivados y diccionario
+02_resultados_y_diccionario/   CSV derivados, indicadores IO y diccionario
 03_modelo_hoja_calculo/        libro Excel auditable
 04_reproduccion_python/        script maestro, paquete y cuaderno
 05_verificacion/               pruebas, balances e informes
@@ -131,15 +152,13 @@ Se comparó `Z_domestica_2013.csv` con dos libros históricos proporcionados por
 
 ## Limitaciones
 
-- La MIP representa la estructura económica de 2013; no debe interpretarse como una estructura 2026 sin un procedimiento separado de actualización.
+- La versión 1.0.0 representa la estructura económica de 2013. Una nueva MIP oficial debe incorporarse como otra versión documentada y validada, sin reinterpretar ni sobrescribir los resultados de 2013.
 - El modelo de Leontief supone coeficientes fijos, proporcionalidad y ausencia de restricciones de capacidad.
 - La matriz producto por producto depende de supuestos de tecnología y homogeneidad descritos por la metodología oficial.
-- El producto `P068` agrupa “Gasolinas, diésel oil y fuel oils”; una desagregación específica de gasolina o etanol requiere datos y supuestos adicionales en el repositorio de aplicación.
 - Este producto derivado no es una estadística oficial ni implica aval del Banco de Guatemala.
 
 ## Autoría y licencias
 
-Autores: Juan Alejandro Osorio, Patricia Villatoro y Noe Salguero. La asignación detallada de roles debe ser ratificada por el equipo antes de la primera publicación formal.
+Autor: Juan Alejandro Osorio.
 
 Los datos derivados y la documentación se distribuyen bajo CC BY 4.0; el código original y las celdas ejecutables del cuaderno, bajo MIT. Las fuentes primarias y los materiales de terceros conservan sus condiciones de origen.
-

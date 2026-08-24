@@ -33,4 +33,10 @@ vectores/componentes_valor_agregado_2013.csv,subvenciones_produccion,Subvencione
 vectores/componentes_valor_agregado_2013.csv,excedente_explotacion_bruto,Excedente de explotación bruto,numérico,millones de quetzales,Fuente
 vectores/componentes_valor_agregado_2013.csv,ingreso_mixto_bruto,Ingreso mixto bruto,numérico,millones de quetzales,Fuente
 05_verificacion/controles_reproduccion.csv,status,Resultado del control,texto,APROBADO/ADVERTENCIA/FALLÓ,Validación automática
-
+indicadores_io_2013.csv,multiplicador_produccion_domestica,Producción doméstica total por unidad de demanda final,numérico,quetzales por quetzal,Suma de columna de la inversa de Leontief doméstica
+indicadores_io_2013.csv,encadenamiento_atras_normalizado,Índice de poder de dispersión hacia atrás,numérico,promedio del sistema igual a 1,Multiplicador de producción dividido por su media
+indicadores_io_2013.csv,encadenamiento_adelante_normalizado,Índice de sensibilidad de dispersión hacia adelante,numérico,promedio del sistema igual a 1,Suma de fila de Leontief dividida por su media
+indicadores_io_2013.csv,coeficiente_importacion_directa,Insumos importados directos por unidad de producción,numérico,quetzales por quetzal,Suma de columna de A importada
+indicadores_io_2013.csv,requerimiento_importacion_total,Importaciones directas e indirectas por unidad de demanda final,numérico,quetzales por quetzal,Suma de columna de A importada por Leontief doméstica
+indicadores_io_2013.csv,multiplicador_valor_agregado,Valor agregado por unidad de demanda final,numérico,quetzales por quetzal,Coeficiente de VAB por Leontief doméstica
+indicadores_io_2013.csv,multiplicador_empleo_puestos_por_millon,Puestos de trabajo por millón de quetzales de demanda final,numérico,puestos por millón de quetzales,Coeficiente de empleo por Leontief doméstica
