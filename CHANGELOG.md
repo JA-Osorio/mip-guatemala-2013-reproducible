@@ -1,5 +1,23 @@
 # Registro de cambios
 
+## Próxima versión — pendiente de publicación
+
+- Cuaderno reconstruido como visor didáctico ejecutado, con código plegado,
+  controles, gráficos, selectores, simulador y salidas guardadas.
+- API reutilizable para indicadores completos, choques de demanda final,
+  rankings, sensibilidad de dispersión y validación de identidades.
+- Cinco salidas analíticas nuevas: indicadores, choques unitarios, rankings,
+  controles IO y control semántico de la fila 174.
+- Metodología cuantitativa ampliada para extracción, orientación matricial,
+  identidades, coeficientes, multiplicadores, choques y actualización futura.
+- Ruta didáctica y tabla de archivos por uso analítico incorporadas al README.
+- La suma de filas de `L` se precisa como sensibilidad de dispersión
+  Rasmussen–Hirschman, no como multiplicador de oferta o modelo de Ghosh.
+- Los productos con producción cero quedan fuera de simulaciones sustantivas y
+  la fila 174 se marca como campo legado no aditivo, no utilizable como PIB.
+- Pruebas ampliadas para comparar elemento a elemento con el libro fuente y
+  preservar la calidad del cuaderno y el alcance exclusivamente IO.
+
 ## 1.0.0 — 2026-08-24
 
 - Publicación estable del conjunto de datos, código, documentación y modelo Excel.

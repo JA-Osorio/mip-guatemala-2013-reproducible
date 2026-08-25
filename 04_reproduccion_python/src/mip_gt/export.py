@@ -10,7 +10,7 @@ from typing import Any
 import numpy as np
 import pandas as pd
 
-from .analysis import io_indicator_frame, safe_coefficient
+from .analysis import io_indicator_frame, safe_coefficient, write_analytical_outputs
 from .models import ControlResult, MipSystem
 
 
@@ -248,6 +248,8 @@ def export_outputs(
     indicators_path = results / "indicadores_io_2013.csv"
     _write_csv(indicators_frame, indicators_path)
     written.append(indicators_path)
+
+    written.extend(write_analytical_outputs(root))
 
     transactions_path = long_data / "transacciones_intermedias_2013.csv"
     _write_csv(_transactions_long(system), transactions_path)

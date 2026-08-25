@@ -16,7 +16,11 @@ Pruebas:
 
 Salida validada: 152 productos, matrices doméstica e importada separadas,
 coeficientes técnicos, inversa de Leontief doméstica, cuentas primarias,
-demanda final, balances, metadatos y manifiesto.
+demanda final, multiplicadores, choques unitarios, rankings, balances,
+metadatos y manifiesto.
 
-Consulte README.md para la metodología, las limitaciones, la estructura y el
-acceso directo al cuaderno ejecutable en Google Colab.
+Consulte README.md para la ruta didáctica, la tabla de archivos, los resultados,
+los controles y el acceso directo al cuaderno ejecutable en Google Colab. La
+especificación completa está en
+01_metodologia/metodologia_cuantitativa_mip_2013.md y el procedimiento para una
+MIP futura en 01_metodologia/guia_uso_analisis_io_y_actualizacion.md.

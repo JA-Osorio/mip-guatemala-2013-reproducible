@@ -12,15 +12,18 @@ version: 1.0.0
 date-released: 2026-08-24
 doi: "10.5281/zenodo.22086008"
 abstract: >-
-  Paquete reproducible para extraer, documentar y validar la matriz
-  insumo-producto producto por producto de Guatemala 2013. Separa matrices
-  doméstica e importada, conserva demanda final y cuentas primarias y publica
-  coeficientes técnicos e inversa de Leontief doméstica.
+  Conjunto de datos y código reproducible para extraer, documentar y validar
+  la matriz insumo-producto producto por producto de Guatemala 2013. Publica
+  matrices doméstica e importada separadas, demanda final, cuentas primarias,
+  coeficientes técnicos, inversa de Leontief doméstica, multiplicadores,
+  encadenamientos y controles computacionales para 152 productos.
 keywords:
   - "matriz insumo-producto"
   - "Leontief"
   - "Guatemala"
   - "cuentas nacionales"
+  - "multiplicadores insumo-producto"
+  - "encadenamientos productivos"
   - "reproducibilidad"
 license: CC-BY-4.0
 repository-code: "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible"

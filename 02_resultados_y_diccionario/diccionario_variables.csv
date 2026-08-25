@@ -22,7 +22,7 @@ vectores/demanda_final_domestica_2013.csv,ajuste_balance_produccion_utilizacion,
 vectores/demanda_final_domestica_2013.csv,demanda_final_balanceada,Demanda final coherente exactamente con producción,numérico,millones de quetzales,Producción menos suma fila Z doméstica
 vectores/produccion_y_utilizacion_2013.csv,produccion_precios_basicos,Producción del producto,numérico,millones de quetzales,Fuente
 vectores/produccion_y_utilizacion_2013.csv,total_utilizacion_precios_basicos,Utilización doméstica total publicada,numérico,millones de quetzales,Fuente
-vectores/produccion_y_utilizacion_2013.csv,producto_interno_bruto,Producto interno bruto asignado al producto,numérico,millones de quetzales,Fuente
+vectores/produccion_y_utilizacion_2013.csv,producto_interno_bruto,Campo legado de D174:EY174 no aditivo y no apto para impactos de PIB,numérico,millones de quetzales,Producción básica más impuestos netos sobre insumos intermedios por columna
 vectores/produccion_y_utilizacion_2013.csv,puestos_trabajo,Puestos de trabajo,numérico,puestos,Fuente
 vectores/cuentas_primarias_2013.csv,impuestos_netos_sobre_productos,Impuestos menos subvenciones sobre productos,numérico,millones de quetzales,Fuente
 vectores/cuentas_primarias_2013.csv,valor_agregado_bruto_oficial,Valor agregado bruto publicado,numérico,millones de quetzales,Fuente
@@ -40,3 +40,40 @@ indicadores_io_2013.csv,coeficiente_importacion_directa,Insumos importados direc
 indicadores_io_2013.csv,requerimiento_importacion_total,Importaciones directas e indirectas por unidad de demanda final,numérico,quetzales por quetzal,Suma de columna de A importada por Leontief doméstica
 indicadores_io_2013.csv,multiplicador_valor_agregado,Valor agregado por unidad de demanda final,numérico,quetzales por quetzal,Coeficiente de VAB por Leontief doméstica
 indicadores_io_2013.csv,multiplicador_empleo_puestos_por_millon,Puestos de trabajo por millón de quetzales de demanda final,numérico,puestos por millón de quetzales,Coeficiente de empleo por Leontief doméstica
+indicadores/indicadores_io_completos_2013.csv,producto_produccion_cero,Identifica productos sin producción base observada,booleano,verdadero/falso,Producción igual a cero
+indicadores/indicadores_io_completos_2013.csv,apto_para_simulacion,Indica si el producto puede ser objetivo de un choque sustantivo,booleano,verdadero/falso,Negación de producto_produccion_cero
+indicadores/indicadores_io_completos_2013.csv,estado_simulacion,Estado de uso analítico del producto,texto,apto/solo_completitud_algebraica,Regla de producción base positiva
+indicadores/indicadores_io_completos_2013.csv,coeficiente_insumo_domestico_directo,Insumos domésticos directos por unidad de producción,numérico,quetzales por quetzal,Suma de columna de A doméstica
+indicadores/indicadores_io_completos_2013.csv,coeficiente_intermedio_total_directo,Insumos domésticos e importados directos por unidad de producción,numérico,quetzales por quetzal,Suma de coeficientes doméstico e importado
+indicadores/indicadores_io_completos_2013.csv,coeficiente_valor_agregado_directo,VAB por unidad de producción,numérico,quetzales por quetzal,VAB dividido por producción
+indicadores/indicadores_io_completos_2013.csv,coeficiente_impuestos_netos_sobre_insumos_intermedios_asociados_directo,Impuestos netos sobre insumos intermedios por unidad de producción,numérico,quetzales por quetzal,Fila 170 D:EY dividida por producción
+indicadores/indicadores_io_completos_2013.csv,coeficiente_empleo_directo_puestos_por_millon,Puestos observados por millón de producción,numérico,puestos por millón de quetzales,Puestos divididos por producción
+indicadores/indicadores_io_completos_2013.csv,multiplicador_produccion_indirecta,Producción indirecta por unidad de demanda final,numérico,quetzales por quetzal,Multiplicador de producción menos uno
+indicadores/indicadores_io_completos_2013.csv,requerimiento_importacion_indirecta,Importaciones indirectas por unidad de demanda final,numérico,quetzales por quetzal,Requerimiento total menos coeficiente directo
+indicadores/indicadores_io_completos_2013.csv,multiplicador_valor_agregado_indirecto,VAB indirecto por unidad de demanda final,numérico,quetzales por quetzal,Multiplicador VAB menos coeficiente directo
+indicadores/indicadores_io_completos_2013.csv,impuestos_netos_sobre_insumos_intermedios_asociados_total,Impuestos netos intermedios directos e indirectos asociados,numérico,quetzales por quetzal,Coeficiente de impuestos intermedios por Leontief doméstica
+indicadores/indicadores_io_completos_2013.csv,impuestos_netos_sobre_insumos_intermedios_asociados_indirecto,Componente indirecto de impuestos netos intermedios asociados,numérico,quetzales por quetzal,Total asociado menos coeficiente directo
+indicadores/indicadores_io_completos_2013.csv,multiplicador_empleo_indirecto_puestos_por_millon,Puestos indirectos asociados por unidad de demanda final,numérico,puestos por millón de quetzales,Multiplicador empleo menos coeficiente directo
+indicadores/indicadores_io_completos_2013.csv,encadenamiento_atras_directo_normalizado,Índice directo de poder de dispersión,numérico,promedio del sistema igual a 1,Suma de columna de A doméstica dividida por su media
+indicadores/indicadores_io_completos_2013.csv,indice_dispersion_adelante_directo_normalizado,Índice directo de sensibilidad de dispersión,numérico,promedio del sistema igual a 1,Suma de fila de A doméstica dividida por su media
+indicadores/indicadores_io_completos_2013.csv,indice_dispersion_adelante_rh_normalizado,Sensibilidad de dispersión Rasmussen-Hirschman no Ghosh,numérico,promedio del sistema igual a 1,Suma de fila de Leontief dividida por su media
+indicadores/indicadores_io_completos_2013.csv,metodo_indice_adelante,Identifica el método del índice de filas,texto,Rasmussen-Hirschman_filas_L_no_Ghosh,Constante metodológica
+indicadores/indicadores_io_completos_2013.csv,tipo_encadenamiento,Cuadrante descriptivo según índices normalizados,texto,clave/impulsor_demanda/proveedor_estrategico/bajo_promedio,Comparación de ambos índices con uno
+indicadores/indicadores_io_completos_2013.csv,ranking_*,Rango descendente del producto para cada indicador,entero,1-152 con empates,Rango mínimo descendente
+indicadores/impactos_choque_unitario_demanda_final_2013.csv,choque_demanda_final_unitario,Choque aplicado a cada producto objetivo,numérico,un millón de quetzales,Vector unitario por producto
+indicadores/impactos_choque_unitario_demanda_final_2013.csv,produccion_*,Producción directa indirecta y total asociada,numérico,millones de quetzales,L por vector de choque y su descomposición
+indicadores/impactos_choque_unitario_demanda_final_2013.csv,importaciones_intermedias_*,Importaciones intermedias directas indirectas y totales,numérico,millones de quetzales,A importada por producción inducida
+indicadores/impactos_choque_unitario_demanda_final_2013.csv,valor_agregado_*,VAB directo indirecto y total asociado,numérico,millones de quetzales,Coeficiente VAB por producción inducida
+indicadores/impactos_choque_unitario_demanda_final_2013.csv,impuestos_netos_sobre_insumos_intermedios_asociados_*,Impuestos intermedios directos indirectos y totales asociados sin interpretación de PIB,numérico,millones de quetzales,Coeficiente de fila 170 D:EY por producción inducida
+indicadores/impactos_choque_unitario_demanda_final_2013.csv,empleo_*_puestos,Puestos directos indirectos y totales asociados,numérico,puestos,Coeficiente de empleo por producción inducida
+indicadores/impactos_choque_unitario_demanda_final_2013.csv,residuo_identidad_produccion_max_abs,Residuo máximo de la identidad del choque,numérico,millones de quetzales,L menos I más propagación doméstica
+indicadores/rankings_io_por_producto_2013.csv,indicador_id,Identificador estable del indicador ordenado,texto,catálogo publicado,Derivado de indicadores completos
+indicadores/rankings_io_por_producto_2013.csv,posicion,Posición secuencial tras ordenar el indicador,entero,1-152,Orden descendente con desempate por código
+indicadores/rankings_io_por_producto_2013.csv,rango_con_empates,Rango estadístico que conserva empates,entero,1-152,Rango mínimo descendente
+indicadores/rankings_io_por_producto_2013.csv,valor,Valor del indicador ordenado,numérico,según indicador,Indicadores completos
+indicadores/validacion_identidades_io_2013.csv,valor_max_abs,Residuo máximo absoluto de la identidad,numérico,según control,Validación automática
+indicadores/validacion_identidades_io_2013.csv,estado,Resultado de la identidad analítica,texto,APROBADO/FALLÓ,Comparación con tolerancia
+indicadores/control_semantico_vector_fila174_2013.csv,apto_para_agregacion_pib,Indica si el vector legado puede agregarse como PIB,booleano,falso,Control semántico
+indicadores/control_semantico_vector_fila174_2013.csv,usado_en_modelo_analitico,Indica si la fila 174 alimenta multiplicadores o choques,booleano,falso,Control semántico
+indicadores/control_semantico_vector_fila174_2013.csv,pib_oficial_ez174_fj174_millones_quetzales,PIB oficial agregado de la fuente,numérico,millones de quetzales,Celdas EZ174 y FJ174
+indicadores/control_semantico_vector_fila174_2013.csv,estado,Prohibición legible por máquina para el campo legado,texto,NO_USAR_COMO_PIB,Control semántico

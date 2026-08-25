@@ -1,5 +1,9 @@
 NOTA TÉCNICA 01 — ESPECIFICACIÓN DEL MODELO DE LEONTIEF
 
+Esta nota es una referencia compacta. La derivación completa, las cuentas
+satélite, los multiplicadores y los límites de interpretación se documentan en
+metodologia_cuantitativa_mip_2013.md.
+
 Sean:
 
   Z_d  matriz de transacciones intermedias domésticas, 152 x 152;
@@ -26,6 +30,22 @@ Se usa A_d —no A_d + A_m— porque el producto de L_d representa producción
 doméstica requerida. Los insumos importados son fugas del circuito doméstico.
 A_m se publica para estimar requisitos importados o construir modelos de
 precios con una interpretación explícita.
+
+Para un choque de demanda final doméstica dy:
+
+  dx = L_d dy
+  dm = A_m dx
+  dv = diag(a_v) dx
+  de = diag(a_e) dx
+
+donde a_v es el coeficiente de VAB y a_e el coeficiente de puestos por millón
+de quetzales de producción.
+
+La suma de columnas de L_d genera el multiplicador de producción y su versión
+normalizada el índice de poder de dispersión hacia atrás. La suma normalizada
+de filas de L_d es el índice de sensibilidad de dispersión de
+Rasmussen-Hirschman, a veces llamado encadenamiento hacia adelante. No es un
+multiplicador de oferta ni un modelo de Ghosh.
 
 Controles matemáticos de la versión 1.0.0:
 

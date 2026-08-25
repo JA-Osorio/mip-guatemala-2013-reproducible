@@ -1,5 +1,9 @@
 NOTA TÉCNICA 00 — CONVERSIÓN DE LA MIP PRODUCTO POR PRODUCTO 2013
 
+Esta nota resume la conversión. La especificación de rangos, orientación,
+coeficientes, simulaciones, controles y actualización futura se desarrolla en
+metodologia_cuantitativa_mip_2013.md.
+
 1. OBJETIVO
 
 Convertir el libro institucional de la MIP 2013 en archivos abiertos,
@@ -61,3 +65,7 @@ Por columna:
 
 La conversión reproduce el año de referencia 2013 y conserva la nomenclatura
 publicada de 152 productos.
+
+Las filas de Z identifican el producto suministrado como insumo y las columnas
+el producto cuya producción lo utiliza. Esta orientación debe conservarse al
+leer los CSV y al construir coeficientes por columna.
