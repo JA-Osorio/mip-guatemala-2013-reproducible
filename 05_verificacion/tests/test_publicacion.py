@@ -206,7 +206,7 @@ class PublicacionDerivadaTests(unittest.TestCase):
             html_output = data.get("text/html", "")
             if isinstance(html_output, list):
                 html_output = "".join(html_output)
-            if "mip-tabla" in html_output:
+            if '<table class="mip-tabla' in html_output:
                 table_outputs.append(html_output)
             svg_output = data.get("image/svg+xml", "")
             if isinstance(svg_output, list):
@@ -224,13 +224,19 @@ class PublicacionDerivadaTests(unittest.TestCase):
             for output in plotly_outputs
             for trace in output.get("data", [])
         ]
-        self.assertEqual(trace_types.count("table"), 8)
+        self.assertEqual(trace_types.count("table"), 9)
         self.assertGreaterEqual(trace_types.count("bar"), 9)
         self.assertEqual(trace_types.count("scatter"), 4)
         self.assertEqual(trace_types.count("heatmap"), 3)
         self.assertTrue(all("Figura" in output or "Tabla" in output for output in svg_outputs))
-        self.assertTrue(all("Banco de Guatemala (2019a)" in output for output in svg_outputs))
-        self.assertTrue(all("Osorio (2026)" in output for output in svg_outputs))
+        self.assertTrue(all("Fuente de datos: Banco de Guatemala (2019a)" in output for output in svg_outputs))
+        self.assertTrue(all("Juan Alejandro Osorio" in output for output in svg_outputs))
+        self.assertTrue(all("Cita: Osorio (2026)" in output for output in svg_outputs))
+        self.assertTrue(all("borrador en revisión" in output for output in svg_outputs))
+        self.assertTrue(all("CC BY 4.0" in output for output in svg_outputs))
+        self.assertTrue(all("Fuente de datos: Banco de Guatemala (2019a)" in output for output in table_outputs))
+        self.assertTrue(all("Juan Alejandro Osorio" in output for output in table_outputs))
+        self.assertTrue(all("Cita: Osorio (2026)" in output for output in table_outputs))
         self.assertFalse(any(re.search(r">P\d{3}<", output) for output in svg_outputs))
 
         for output in plotly_outputs:
@@ -242,12 +248,27 @@ class PublicacionDerivadaTests(unittest.TestCase):
             )
             config = output.get("config", {})
             image_config = config.get("toImageButtonOptions", {})
+            es_tabla = any(
+                trace.get("type") == "table" for trace in output.get("data", [])
+            )
             self.assertRegex(title, r"<(?:b)>.*(?:Figura|Tabla)")
-            self.assertIn("Banco de Guatemala (2019a)", annotations)
-            self.assertIn("Osorio (2026)", annotations)
+            self.assertIn("Fuente de datos: Banco de Guatemala (2019a)", annotations)
+            self.assertIn("Juan Alejandro Osorio", annotations)
+            self.assertIn("Cita: Osorio (2026)", annotations)
+            self.assertIn("borrador en revisión", annotations)
+            self.assertIn("CC BY 4.0", annotations)
+            self.assertEqual(layout.get("title", {}).get("yref"), "container")
+            self.assertEqual(layout.get("title", {}).get("yanchor"), "top")
             self.assertFalse(config.get("displaylogo", True))
-            self.assertTrue(config.get("responsive", False))
-            self.assertTrue(config.get("scrollZoom", False))
+            self.assertEqual(config.get("responsive"), not es_tabla)
+            self.assertFalse(config.get("scrollZoom", True))
+            if es_tabla:
+                self.assertFalse(layout.get("autosize", True))
+                self.assertLessEqual(layout.get("width", 10_000), 1100)
+                for trace in output.get("data", []):
+                    if trace.get("type") == "table":
+                        filas = trace.get("cells", {}).get("values", [[]])[0]
+                        self.assertLessEqual(len(filas), 10)
             self.assertEqual(image_config.get("format"), "png")
             self.assertEqual(image_config.get("width"), 1400)
             self.assertGreaterEqual(image_config.get("height", 0), 700)
@@ -267,6 +288,14 @@ class PublicacionDerivadaTests(unittest.TestCase):
             for button in menu.get("buttons", [])
         ]
         self.assertEqual(etiquetas_botones, ["Total", "Doméstica", "Importada"])
+        menus = [
+            menu
+            for output in plotly_outputs
+            for menu in output.get("layout", {}).get("updatemenus", [])
+        ]
+        self.assertEqual(len(menus), 2)
+        self.assertTrue(all(menu.get("yanchor") == "bottom" for menu in menus))
+        self.assertTrue(all(menu.get("y") <= 1.02 for menu in menus))
 
         source = "\n".join(
             "".join(cell.get("source", []))
@@ -276,7 +305,13 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertIn("import plotly.graph_objects as go", source)
         self.assertIn("go.Heatmap", source)
         self.assertIn("go.Table", source)
-        self.assertIn("Cálculos y visualización: Osorio (2026)", source)
+        self.assertIn("Fuente de datos: Banco de Guatemala (2019a)", source)
+        self.assertIn("Autor de los cálculos, el diseño y la visualización", source)
+        self.assertIn("Juan Alejandro Osorio", source)
+        self.assertIn("Cita: Osorio (2026)", source)
+        self.assertIn("borrador en revisión", source)
+        self.assertIn(".mip-scroll{overflow-x:auto;overflow-y:visible}", source)
+        self.assertNotIn("elaboración propia", (source + "\n" + "\n".join(table_outputs + svg_outputs)).lower())
 
     def test_inventario_publico_usa_solo_fuentes_canonicas(self) -> None:
         registry = pd.read_csv(
