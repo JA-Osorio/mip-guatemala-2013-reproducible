@@ -1,6 +1,6 @@
-CRÉDITOS — VERSIÓN 1.0.0
+CRÉDITOS — VERSIÓN 1.1.0
 
-MIP Guatemala 2013 reproducible
+Matriz Insumo-Producto (MIP) de Guatemala, año de referencia 2013
 
 AUTORÍA
 
@@ -8,12 +8,13 @@ Juan Alejandro Osorio
 Universidad Rafael Landívar
 ORCID: 0009-0001-4260-772X
 Contacto: jaosorio@url.edu.gt
-DOI: https://doi.org/10.5281/zenodo.22086008
+DOI reservado para la versión archivada:
+https://doi.org/10.5281/zenodo.22089741
 
 La autoría corresponde a este producto de datos y código.
 
 FUENTE INSTITUCIONAL
 
-Banco de Guatemala: matriz insumo-producto producto por producto de Guatemala,
-año de referencia 2013. La transformación reproducible no implica aval del
-organismo productor.
+Banco de Guatemala: Matriz Insumo-Producto (MIP) de Guatemala, año de
+referencia 2013, producto por producto, publicada en diciembre de 2019. La
+transformación reproducible no implica aval del organismo productor.

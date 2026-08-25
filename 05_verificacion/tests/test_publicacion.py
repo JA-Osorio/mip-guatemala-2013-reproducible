@@ -157,8 +157,9 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertTrue(
             all(cell.get("execution_count") is not None for cell in code_cells)
         )
-        self.assertGreaterEqual(len(outputs), 16)
-        self.assertEqual(mime_types.count("image/svg+xml"), 5)
+        self.assertGreaterEqual(len(outputs), 17)
+        self.assertEqual(mime_types.count("application/vnd.plotly.v1+json"), 14)
+        self.assertEqual(mime_types.count("image/svg+xml"), 6)
         self.assertGreaterEqual(mime_types.count("text/html"), 11)
         self.assertNotIn("image/png", mime_types)
         self.assertFalse(any(output.get("output_type") == "error" for output in outputs))
@@ -179,6 +180,13 @@ class PublicacionDerivadaTests(unittest.TestCase):
             )
         )
         self.assertIn("$$", markdown)
+        self.assertIn("Matriz Insumo-Producto (MIP) de Guatemala", markdown)
+        self.assertIn("Nomenclatura de Productos de Guatemala (NPG)", markdown)
+        self.assertIn("## Cómo citar este conjunto de datos y cuaderno", markdown)
+        self.assertIn("## Referencias", markdown)
+        self.assertIn("(Banco de Guatemala, 2019a, 2019b)", markdown)
+        self.assertIn("(Rasmussen, 1956; Hirschman, 1958; Miller y Blair, 2022)", markdown)
+        self.assertIn("(Osorio, 2026)", markdown)
         self.assertNotIn(r"\[", markdown)
         self.assertNotIn(r"\]", markdown)
         for forbidden in (
@@ -192,6 +200,7 @@ class PublicacionDerivadaTests(unittest.TestCase):
 
         table_outputs = []
         svg_outputs = []
+        plotly_outputs = []
         for output in outputs:
             data = output.get("data", {})
             html_output = data.get("text/html", "")
@@ -204,10 +213,70 @@ class PublicacionDerivadaTests(unittest.TestCase):
                 svg_output = "".join(svg_output)
             if svg_output:
                 svg_outputs.append(svg_output)
+            plotly_output = data.get("application/vnd.plotly.v1+json")
+            if plotly_output:
+                plotly_outputs.append(plotly_output)
         self.assertGreaterEqual(len(table_outputs), 8)
         self.assertTrue(all("<style>" in output for output in table_outputs))
-        self.assertTrue(all("Servicios de" in output or "Productos de" in output or "Carne" in output for output in svg_outputs))
+        self.assertEqual(len(plotly_outputs), 14)
+        trace_types = [
+            trace["type"]
+            for output in plotly_outputs
+            for trace in output.get("data", [])
+        ]
+        self.assertEqual(trace_types.count("table"), 8)
+        self.assertGreaterEqual(trace_types.count("bar"), 9)
+        self.assertEqual(trace_types.count("scatter"), 4)
+        self.assertEqual(trace_types.count("heatmap"), 3)
+        self.assertTrue(all("Figura" in output or "Tabla" in output for output in svg_outputs))
+        self.assertTrue(all("Banco de Guatemala (2019a)" in output for output in svg_outputs))
+        self.assertTrue(all("Osorio (2026)" in output for output in svg_outputs))
         self.assertFalse(any(re.search(r">P\d{3}<", output) for output in svg_outputs))
+
+        for output in plotly_outputs:
+            layout = output.get("layout", {})
+            title = layout.get("title", {}).get("text", "")
+            annotations = " ".join(
+                annotation.get("text", "")
+                for annotation in layout.get("annotations", [])
+            )
+            config = output.get("config", {})
+            image_config = config.get("toImageButtonOptions", {})
+            self.assertRegex(title, r"<(?:b)>.*(?:Figura|Tabla)")
+            self.assertIn("Banco de Guatemala (2019a)", annotations)
+            self.assertIn("Osorio (2026)", annotations)
+            self.assertFalse(config.get("displaylogo", True))
+            self.assertTrue(config.get("responsive", False))
+            self.assertTrue(config.get("scrollZoom", False))
+            self.assertEqual(image_config.get("format"), "png")
+            self.assertEqual(image_config.get("width"), 1400)
+            self.assertGreaterEqual(image_config.get("height", 0), 700)
+            self.assertEqual(image_config.get("scale"), 2)
+            self.assertTrue(image_config.get("filename"))
+
+        mapas = [
+            output
+            for output in plotly_outputs
+            if [trace.get("type") for trace in output.get("data", [])]
+            == ["heatmap", "heatmap", "heatmap"]
+        ]
+        self.assertEqual(len(mapas), 1)
+        etiquetas_botones = [
+            button["label"]
+            for menu in mapas[0]["layout"].get("updatemenus", [])
+            for button in menu.get("buttons", [])
+        ]
+        self.assertEqual(etiquetas_botones, ["Total", "Doméstica", "Importada"])
+
+        source = "\n".join(
+            "".join(cell.get("source", []))
+            for cell in notebook["cells"]
+            if cell["cell_type"] == "code"
+        )
+        self.assertIn("import plotly.graph_objects as go", source)
+        self.assertIn("go.Heatmap", source)
+        self.assertIn("go.Table", source)
+        self.assertIn("Cálculos y visualización: Osorio (2026)", source)
 
     def test_inventario_publico_usa_solo_fuentes_canonicas(self) -> None:
         registry = pd.read_csv(
@@ -218,6 +287,14 @@ class PublicacionDerivadaTests(unittest.TestCase):
 
         manifest = (ROOT / "manifiesto_archivos.txt").read_text(encoding="utf-8")
         self.assertNotIn(".venv/", manifest)
+
+    def test_dependencia_interactiva_declarada(self) -> None:
+        project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        requirements = (
+            ROOT / "04_reproduccion_python" / "requirements.txt"
+        ).read_text(encoding="utf-8")
+        self.assertIn('"plotly==6.9.0"', project)
+        self.assertIn("plotly==6.9.0", requirements)
 
     def test_repositorio_sin_aplicacion_tematica(self) -> None:
         text_extensions = {
