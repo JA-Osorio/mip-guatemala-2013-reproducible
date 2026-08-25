@@ -363,9 +363,14 @@ def write_reproduction_report(
 def write_public_manifest(root: Path, path: Path) -> None:
     excluded_parts = {
         ".git",
+        ".venv",
         "__pycache__",
         ".pytest_cache",
+        ".mypy_cache",
+        ".ruff_cache",
         "_rendered",
+        "build",
+        "dist",
         "fuentes_originales_no_redistribuidas",
     }
     excluded_names = {path.name, ".DS_Store"}

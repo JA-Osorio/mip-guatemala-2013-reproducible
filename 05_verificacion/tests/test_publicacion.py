@@ -121,9 +121,6 @@ class PublicacionDerivadaTests(unittest.TestCase):
 
     def test_alcance_y_acceso_colab(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        notebook = (
-            ROOT / "04_reproduccion_python" / "cuaderno_exploracion_mip_2013.ipynb"
-        ).read_text(encoding="utf-8")
         self.assertIn(
             "El alcance es estadístico y computacional", readme
         )
@@ -133,7 +130,6 @@ class PublicacionDerivadaTests(unittest.TestCase):
             "04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb"
         )
         self.assertIn(colab_url, readme)
-        self.assertIn(colab_url, notebook)
 
     def test_cuaderno_ejecutado_plegado_y_con_salidas(self) -> None:
         notebook_path = (
@@ -151,14 +147,20 @@ class PublicacionDerivadaTests(unittest.TestCase):
             for output in outputs
             for mime_type in output.get("data", {})
         ]
+        markdown = "\n".join(
+            "".join(cell.get("source", []))
+            for cell in notebook["cells"]
+            if cell["cell_type"] == "markdown"
+        )
 
-        self.assertGreaterEqual(len(code_cells), 8)
+        self.assertEqual(len(code_cells), 7)
         self.assertTrue(
             all(cell.get("execution_count") is not None for cell in code_cells)
         )
-        self.assertGreaterEqual(len(outputs), 30)
-        self.assertGreaterEqual(mime_types.count("image/svg+xml"), 6)
-        self.assertGreaterEqual(mime_types.count("text/html"), 20)
+        self.assertGreaterEqual(len(outputs), 16)
+        self.assertEqual(mime_types.count("image/svg+xml"), 5)
+        self.assertGreaterEqual(mime_types.count("text/html"), 11)
+        self.assertNotIn("image/png", mime_types)
         self.assertFalse(any(output.get("output_type") == "error" for output in outputs))
         self.assertTrue(
             all(
@@ -176,13 +178,46 @@ class PublicacionDerivadaTests(unittest.TestCase):
                 for cell in code_cells
             )
         )
-        widget_state = (
-            notebook.get("metadata", {})
-            .get("widgets", {})
-            .get("application/vnd.jupyter.widget-state+json", {})
-            .get("state", {})
+        self.assertIn("$$", markdown)
+        self.assertNotIn(r"\[", markdown)
+        self.assertNotIn(r"\]", markdown)
+        for forbidden in (
+            "abrir en colab",
+            "github",
+            "controles de calidad",
+            "descargar qa",
+            "<button",
+        ):
+            self.assertNotIn(forbidden, markdown.lower())
+
+        table_outputs = []
+        svg_outputs = []
+        for output in outputs:
+            data = output.get("data", {})
+            html_output = data.get("text/html", "")
+            if isinstance(html_output, list):
+                html_output = "".join(html_output)
+            if "mip-tabla" in html_output:
+                table_outputs.append(html_output)
+            svg_output = data.get("image/svg+xml", "")
+            if isinstance(svg_output, list):
+                svg_output = "".join(svg_output)
+            if svg_output:
+                svg_outputs.append(svg_output)
+        self.assertGreaterEqual(len(table_outputs), 8)
+        self.assertTrue(all("<style>" in output for output in table_outputs))
+        self.assertTrue(all("Servicios de" in output or "Productos de" in output or "Carne" in output for output in svg_outputs))
+        self.assertFalse(any(re.search(r">P\d{3}<", output) for output in svg_outputs))
+
+    def test_inventario_publico_usa_solo_fuentes_canonicas(self) -> None:
+        registry = pd.read_csv(
+            ROOT / "00_trazabilidad_fuentes" / "registro_fuentes_mip_2013.csv"
         )
-        self.assertGreaterEqual(len(widget_state), 1)
+        self.assertEqual(registry["id_fuente"].tolist(), ["F01", "F02", "F03"])
+        self.assertEqual(set(registry["organismo"]), {"Banco de Guatemala"})
+
+        manifest = (ROOT / "manifiesto_archivos.txt").read_text(encoding="utf-8")
+        self.assertNotIn(".venv/", manifest)
 
     def test_repositorio_sin_aplicacion_tematica(self) -> None:
         text_extensions = {

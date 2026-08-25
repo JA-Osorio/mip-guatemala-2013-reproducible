@@ -1,4 +1,0 @@
-archivo_historico,sha256,bloque_comparado,dimension,diferencia_maxima_absoluta,celdas_diferencia_mayor_1e_10,conclusion,limitacion
-mtriz io.xlsx,05bbf54208ece342814278b029123c32517d7129dff0cb4b8c6d98c153fbbdbe,Z doméstica,152x152,5.002220859751105e-12,0,Coincide numéricamente con Z_domestica_2013.csv,No conserva el sistema completo requerido para reconstruir importaciones demanda final producción impuestos y VAB
-MIO.xlsx,0de411f8b0c76e30764926e1447ecd050f9562e6b6c1a49c9310eddc8d26ab13,Z doméstica,152x152,5.002220859751105e-12,0,Coincide numéricamente con Z_domestica_2013.csv,No conserva el sistema completo requerido para reconstruir importaciones demanda final producción impuestos y VAB
-

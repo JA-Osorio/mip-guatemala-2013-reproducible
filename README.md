@@ -268,21 +268,11 @@ Si falla un control obligatorio, la exportación se detiene.
 03_modelo_hoja_calculo/        vista Excel auditable de los derivados
 04_reproduccion_python/        script, paquete, configuración y cuaderno
 05_verificacion/               controles, balances, pruebas e informe
-98_archivo_historico/          materiales aislados; no alimentan la reproducción
 ```
 
 Los CSV anchos preservan las matrices completas. `datos_largos/` entrega
 transacciones intermedias y demanda final en formato normalizado para R,
 Python, bases de datos y visualización.
-
-## Comparación con construcciones previas
-
-`Z_domestica_2013.csv` se contrastó con dos libros históricos proporcionados
-por el equipo. Ambos conservan el mismo bloque doméstico, con diferencia máxima
-absoluta de `5.0022e-12`, atribuible a serialización numérica. No bastan para
-reconstruir el sistema completo porque no preservan conjuntamente la matriz
-importada, demanda final, producción, impuestos y VAB. El contraste está en
-`05_verificacion/comparacion_con_construcciones_previas.csv`.
 
 ## Cómo actualizar cuando se publique otra MIP
 

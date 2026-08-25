@@ -178,8 +178,8 @@ aceptarse solo porque el archivo abre.
     pruebas, libro auditable y cuaderno.
 13. Ejecute todo en un entorno limpio y compruebe que la versión pública pueda
     validarse sin redistribuir la fuente restringida.
-14. Publique una versión y DOI nuevos, relacionados con 2013, sin sustituir el
-    depósito histórico.
+14. Publique el nuevo año como otro conjunto versionado, con su propio DOI y
+    una relación explícita con la edición 2013.
 
 Una lista metodológica más detallada está en
 `metodologia_cuantitativa_mip_2013.md`, sección 11.

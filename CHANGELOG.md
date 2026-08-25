@@ -33,5 +33,4 @@
 - Construcción de coeficientes técnicos e inversa de Leontief doméstica.
 - Documentación explícita de la convención CIF/FOB.
 - Incorporación de 22 controles computacionales y 11 pruebas independientes.
-- Comparación de la matriz doméstica con dos construcciones históricas del equipo.
 - Libro Excel auditable y cuaderno de exploración no canónico.
