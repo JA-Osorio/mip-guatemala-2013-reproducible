@@ -153,14 +153,14 @@ class PublicacionDerivadaTests(unittest.TestCase):
             if cell["cell_type"] == "markdown"
         )
 
-        self.assertEqual(len(code_cells), 7)
+        self.assertEqual(len(code_cells), 16)
         self.assertTrue(
             all(cell.get("execution_count") is not None for cell in code_cells)
         )
-        self.assertGreaterEqual(len(outputs), 17)
+        self.assertGreaterEqual(len(outputs), 15)
         self.assertEqual(mime_types.count("application/vnd.plotly.v1+json"), 14)
         self.assertEqual(mime_types.count("image/svg+xml"), 6)
-        self.assertGreaterEqual(mime_types.count("text/html"), 11)
+        self.assertGreaterEqual(mime_types.count("text/html"), 9)
         self.assertNotIn("image/png", mime_types)
         self.assertFalse(any(output.get("output_type") == "error" for output in outputs))
         self.assertTrue(
@@ -171,6 +171,10 @@ class PublicacionDerivadaTests(unittest.TestCase):
                 for cell in code_cells
             )
         )
+        self.assertTrue(
+            all(cell.get("metadata", {}).get("scrolled") is False for cell in code_cells)
+        )
+        self.assertTrue(all(len(cell.get("outputs", [])) <= 1 for cell in code_cells))
         self.assertTrue(
             all(
                 cell.get("metadata", {})
@@ -184,14 +188,21 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertIn("Nomenclatura de Productos de Guatemala (NPG)", markdown)
         self.assertIn("## Cómo citar este conjunto de datos y cuaderno", markdown)
         self.assertIn("## Referencias", markdown)
-        self.assertIn("(Banco de Guatemala, 2019a, 2019b)", markdown)
-        self.assertIn("(Rasmussen, 1956; Hirschman, 1958; Miller y Blair, 2022)", markdown)
+        self.assertIn("(Banco de Guatemala, 2019b, 2019c)", markdown)
+        self.assertIn(
+            "(Hirschman, 1958; Miller & Blair, 2022; Rasmussen, 1956)",
+            markdown,
+        )
         self.assertIn("(Osorio, 2026)", markdown)
+        self.assertIn("[Conjunto de datos]", markdown)
+        self.assertIn("GitHub. https://github.com/JA-Osorio", markdown)
+        self.assertNotIn("zenodo.22089741", markdown)
+        self.assertNotIn("**", markdown)
+        self.assertNotIn("—", markdown)
         self.assertNotIn(r"\[", markdown)
         self.assertNotIn(r"\]", markdown)
         for forbidden in (
             "abrir en colab",
-            "github",
             "controles de calidad",
             "descargar qa",
             "<button",
@@ -229,14 +240,18 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertEqual(trace_types.count("scatter"), 4)
         self.assertEqual(trace_types.count("heatmap"), 3)
         self.assertTrue(all("Figura" in output or "Tabla" in output for output in svg_outputs))
-        self.assertTrue(all("Fuente de datos: Banco de Guatemala (2019a)" in output for output in svg_outputs))
-        self.assertTrue(all("Juan Alejandro Osorio" in output for output in svg_outputs))
-        self.assertTrue(all("Cita: Osorio (2026)" in output for output in svg_outputs))
-        self.assertTrue(all("borrador en revisión" in output for output in svg_outputs))
-        self.assertTrue(all("CC BY 4.0" in output for output in svg_outputs))
-        self.assertTrue(all("Fuente de datos: Banco de Guatemala (2019a)" in output for output in table_outputs))
-        self.assertTrue(all("Juan Alejandro Osorio" in output for output in table_outputs))
-        self.assertTrue(all("Cita: Osorio (2026)" in output for output in table_outputs))
+        for collection in (svg_outputs, table_outputs):
+            self.assertTrue(all("Nota." in output for output in collection))
+            self.assertTrue(
+                all("análisis reproducible de Osorio (2026)" in output for output in collection)
+            )
+            self.assertTrue(
+                all("Banco de Guatemala (2019b)" in output for output in collection)
+            )
+            self.assertFalse(any("Juan Alejandro Osorio" in output for output in collection))
+            self.assertFalse(any("Fuente de datos:" in output for output in collection))
+            self.assertFalse(any("borrador en revisión" in output for output in collection))
+            self.assertFalse(any("CC BY 4.0" in output for output in collection))
         self.assertFalse(any(re.search(r">P\d{3}<", output) for output in svg_outputs))
 
         for output in plotly_outputs:
@@ -251,24 +266,45 @@ class PublicacionDerivadaTests(unittest.TestCase):
             es_tabla = any(
                 trace.get("type") == "table" for trace in output.get("data", [])
             )
-            self.assertRegex(title, r"<(?:b)>.*(?:Figura|Tabla)")
-            self.assertIn("Fuente de datos: Banco de Guatemala (2019a)", annotations)
-            self.assertIn("Juan Alejandro Osorio", annotations)
-            self.assertIn("Cita: Osorio (2026)", annotations)
-            self.assertIn("borrador en revisión", annotations)
-            self.assertIn("CC BY 4.0", annotations)
+            self.assertRegex(
+                title,
+                r"^<b>(?:Figura|Tabla) \d+</b><br><i>.+</i>$",
+            )
+            self.assertTrue(annotations.strip().startswith("<i>Nota.</i>"))
+            self.assertIn("análisis reproducible de Osorio (2026)", annotations)
+            self.assertIn("Banco de Guatemala (2019b)", annotations)
+            self.assertNotIn("Juan Alejandro Osorio", annotations)
+            self.assertNotIn("Fuente de datos:", annotations)
+            self.assertNotIn("borrador en revisión", annotations)
+            self.assertNotIn("CC BY 4.0", annotations)
+            self.assertEqual(layout.get("title", {}).get("xref"), "container")
+            self.assertGreaterEqual(layout.get("title", {}).get("x", 0), 0.03)
             self.assertEqual(layout.get("title", {}).get("yref"), "container")
             self.assertEqual(layout.get("title", {}).get("yanchor"), "top")
+            nota_visual = layout.get("annotations", [])[-1]
+            self.assertAlmostEqual(
+                layout.get("margin", {}).get("l", 0) + nota_visual.get("xshift", 0),
+                36,
+            )
             self.assertFalse(config.get("displaylogo", True))
-            self.assertEqual(config.get("responsive"), not es_tabla)
+            self.assertTrue(config.get("responsive"))
             self.assertFalse(config.get("scrollZoom", True))
             if es_tabla:
-                self.assertFalse(layout.get("autosize", True))
-                self.assertLessEqual(layout.get("width", 10_000), 1100)
+                self.assertTrue(layout.get("autosize", False))
+                self.assertIsNone(layout.get("width"))
+                self.assertGreaterEqual(layout.get("margin", {}).get("l", 0), 36)
                 for trace in output.get("data", []):
                     if trace.get("type") == "table":
                         filas = trace.get("cells", {}).get("values", [[]])[0]
                         self.assertLessEqual(len(filas), 10)
+                        self.assertNotRegex(
+                            json.dumps(trace.get("cells", {}), ensure_ascii=False),
+                            r"P\d{3}",
+                        )
+                        self.assertNotIn(
+                            "<b>",
+                            json.dumps(trace.get("header", {}), ensure_ascii=False),
+                        )
             self.assertEqual(image_config.get("format"), "png")
             self.assertEqual(image_config.get("width"), 1400)
             self.assertGreaterEqual(image_config.get("height", 0), 700)
@@ -305,12 +341,14 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertIn("import plotly.graph_objects as go", source)
         self.assertIn("go.Heatmap", source)
         self.assertIn("go.Table", source)
-        self.assertIn("Fuente de datos: Banco de Guatemala (2019a)", source)
-        self.assertIn("Autor de los cálculos, el diseño y la visualización", source)
-        self.assertIn("Juan Alejandro Osorio", source)
-        self.assertIn("Cita: Osorio (2026)", source)
-        self.assertIn("borrador en revisión", source)
-        self.assertIn(".mip-scroll{overflow-x:auto;overflow-y:visible}", source)
+        self.assertIn("análisis reproducible de Osorio (2026)", source)
+        self.assertIn("Banco de Guatemala (2019b)", source)
+        self.assertNotIn("Autor de los cálculos, el diseño y la visualización", source)
+        self.assertNotIn("Fuente de datos:", source)
+        self.assertNotIn("borrador en revisión", source)
+        self.assertNotIn("CC BY 4.0", source)
+        self.assertIn(".mip-scroll{overflow:visible}", source)
+        self.assertNotIn("overflow-x:auto", source)
         self.assertNotIn("elaboración propia", (source + "\n" + "\n".join(table_outputs + svg_outputs)).lower())
 
     def test_inventario_publico_usa_solo_fuentes_canonicas(self) -> None:
