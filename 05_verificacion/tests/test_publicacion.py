@@ -188,6 +188,7 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertIn("Nomenclatura de Productos de Guatemala (NPG)", markdown)
         self.assertIn("## Cómo citar este conjunto de datos y cuaderno", markdown)
         self.assertIn("## Referencias", markdown)
+        self.assertNotIn("## Claves de interpretación", markdown)
         self.assertIn("(Banco de Guatemala, 2019b, 2019c)", markdown)
         self.assertIn(
             "(Hirschman, 1958; Miller & Blair, 2022; Rasmussen, 1956)",
@@ -195,7 +196,9 @@ class PublicacionDerivadaTests(unittest.TestCase):
         )
         self.assertIn("(Osorio, 2026)", markdown)
         self.assertIn("[Conjunto de datos]", markdown)
-        self.assertIn("GitHub. https://github.com/JA-Osorio", markdown)
+        self.assertIn("GitHub. <https://github.com/JA-Osorio", markdown)
+        self.assertIn("- Banco de Guatemala. (2019a). *Cuentas Nacionales", markdown)
+        self.assertNotIn("padding-left:2em", markdown)
         self.assertNotIn("zenodo.22089741", markdown)
         self.assertNotIn("**", markdown)
         self.assertNotIn("—", markdown)
@@ -235,7 +238,7 @@ class PublicacionDerivadaTests(unittest.TestCase):
             for output in plotly_outputs
             for trace in output.get("data", [])
         ]
-        self.assertEqual(trace_types.count("table"), 9)
+        self.assertEqual(trace_types.count("table"), 8)
         self.assertGreaterEqual(trace_types.count("bar"), 9)
         self.assertEqual(trace_types.count("scatter"), 4)
         self.assertEqual(trace_types.count("heatmap"), 3)
@@ -287,11 +290,11 @@ class PublicacionDerivadaTests(unittest.TestCase):
                 36,
             )
             self.assertFalse(config.get("displaylogo", True))
-            self.assertTrue(config.get("responsive"))
+            self.assertEqual(config.get("responsive"), not es_tabla)
             self.assertFalse(config.get("scrollZoom", True))
             if es_tabla:
-                self.assertTrue(layout.get("autosize", False))
-                self.assertIsNone(layout.get("width"))
+                self.assertFalse(layout.get("autosize", True))
+                self.assertLessEqual(layout.get("width", 10_000), 900)
                 self.assertGreaterEqual(layout.get("margin", {}).get("l", 0), 36)
                 for trace in output.get("data", []):
                     if trace.get("type") == "table":
@@ -306,7 +309,10 @@ class PublicacionDerivadaTests(unittest.TestCase):
                             json.dumps(trace.get("header", {}), ensure_ascii=False),
                         )
             self.assertEqual(image_config.get("format"), "png")
-            self.assertEqual(image_config.get("width"), 1400)
+            self.assertEqual(
+                image_config.get("width"),
+                layout.get("width") if es_tabla else 1400,
+            )
             self.assertGreaterEqual(image_config.get("height", 0), 700)
             self.assertEqual(image_config.get("scale"), 2)
             self.assertTrue(image_config.get("filename"))
