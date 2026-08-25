@@ -8,6 +8,8 @@ __pycache__/
 .pytest_cache/
 .venv/
 *.egg-info/
+build/
+dist/
 
 # Temporales y sistema
 .DS_Store
@@ -16,4 +18,3 @@ __pycache__/
 
 # Renderizados de control locales
 03_modelo_hoja_calculo/_rendered/
-

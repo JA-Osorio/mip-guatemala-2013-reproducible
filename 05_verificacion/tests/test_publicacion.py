@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -109,7 +110,11 @@ class PublicacionDerivadaTests(unittest.TestCase):
 
     def test_metadatos(self) -> None:
         metadata = json.loads((RESULTS / "metadatos_dataset.json").read_text("utf-8"))
-        self.assertEqual(metadata["version"], "1.0.0")
+        zenodo = json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
+        package_version = __import__("mip_gt").__version__
+        self.assertEqual(metadata["version"], zenodo["version"])
+        self.assertEqual(metadata["version"], package_version)
+        self.assertRegex(metadata["version"], r"^\d+\.\d+\.\d+$")
         self.assertEqual(metadata["products"], 152)
         self.assertTrue(metadata["mandatory_controls_passed"])
         self.assertLess(metadata["spectral_radius_a_domestic"], 1.0)
@@ -120,7 +125,7 @@ class PublicacionDerivadaTests(unittest.TestCase):
             ROOT / "04_reproduccion_python" / "cuaderno_exploracion_mip_2013.ipynb"
         ).read_text(encoding="utf-8")
         self.assertIn(
-            "El alcance es exclusivamente estadístico y computacional", readme
+            "El alcance es estadístico y computacional", readme
         )
         colab_url = (
             "https://colab.research.google.com/github/JA-Osorio/"
@@ -129,6 +134,88 @@ class PublicacionDerivadaTests(unittest.TestCase):
         )
         self.assertIn(colab_url, readme)
         self.assertIn(colab_url, notebook)
+
+    def test_cuaderno_ejecutado_plegado_y_con_salidas(self) -> None:
+        notebook_path = (
+            ROOT / "04_reproduccion_python" / "cuaderno_exploracion_mip_2013.ipynb"
+        )
+        notebook = json.loads(notebook_path.read_text(encoding="utf-8"))
+        code_cells = [
+            cell for cell in notebook["cells"] if cell["cell_type"] == "code"
+        ]
+        outputs = [
+            output for cell in code_cells for output in cell.get("outputs", [])
+        ]
+        mime_types = [
+            mime_type
+            for output in outputs
+            for mime_type in output.get("data", {})
+        ]
+
+        self.assertGreaterEqual(len(code_cells), 8)
+        self.assertTrue(
+            all(cell.get("execution_count") is not None for cell in code_cells)
+        )
+        self.assertGreaterEqual(len(outputs), 30)
+        self.assertGreaterEqual(mime_types.count("image/svg+xml"), 6)
+        self.assertGreaterEqual(mime_types.count("text/html"), 20)
+        self.assertFalse(any(output.get("output_type") == "error" for output in outputs))
+        self.assertTrue(
+            all(
+                {"hide-input", "remove_input"}.issubset(
+                    set(cell.get("metadata", {}).get("tags", []))
+                )
+                for cell in code_cells
+            )
+        )
+        self.assertTrue(
+            all(
+                cell.get("metadata", {})
+                .get("jupyter", {})
+                .get("source_hidden", False)
+                for cell in code_cells
+            )
+        )
+        widget_state = (
+            notebook.get("metadata", {})
+            .get("widgets", {})
+            .get("application/vnd.jupyter.widget-state+json", {})
+            .get("state", {})
+        )
+        self.assertGreaterEqual(len(widget_state), 1)
+
+    def test_repositorio_sin_aplicacion_tematica(self) -> None:
+        text_extensions = {
+            ".cff",
+            ".csv",
+            ".ipynb",
+            ".json",
+            ".md",
+            ".py",
+            ".txt",
+            ".yaml",
+            ".yml",
+        }
+        forbidden = (
+            "eta" + "nol",
+            "alcohol " + "carburante",
+            "mezcla " + "e10",
+        )
+        matches: list[str] = []
+        for path in ROOT.rglob("*"):
+            if not path.is_file() or path.suffix.lower() not in text_extensions:
+                continue
+            if any(
+                part in {".git", "__pycache__", "fuentes_originales_no_redistribuidas"}
+                for part in path.relative_to(ROOT).parts
+            ):
+                continue
+            if path.name == "manifiesto_archivos.txt":
+                continue
+            content = path.read_text(encoding="utf-8", errors="ignore").lower()
+            if any(term in content for term in forbidden):
+                matches.append(path.relative_to(ROOT).as_posix())
+        self.assertEqual(matches, [])
 
     def test_indicadores_io(self) -> None:
         indicators = pd.read_csv(RESULTS / "indicadores_io_2013.csv")
@@ -155,6 +242,26 @@ class PublicacionDerivadaTests(unittest.TestCase):
             indicators["encadenamiento_adelante_normalizado"].mean(), 1.0, places=12
         )
 
+    def test_diccionario_documenta_salidas_y_fila_174(self) -> None:
+        dictionary = pd.read_csv(RESULTS / "diccionario_variables.csv")
+        legacy = dictionary[
+            (dictionary["archivo_o_grupo"] == "vectores/produccion_y_utilizacion_2013.csv")
+            & (dictionary["variable"] == "producto_interno_bruto")
+        ]
+        self.assertEqual(len(legacy), 1)
+        self.assertIn("no aditivo", legacy.iloc[0]["definicion"].lower())
+        self.assertIn("no apto", legacy.iloc[0]["definicion"].lower())
+
+        documented_groups = set(dictionary["archivo_o_grupo"])
+        expected_groups = {
+            "indicadores/indicadores_io_completos_2013.csv",
+            "indicadores/impactos_choque_unitario_demanda_final_2013.csv",
+            "indicadores/rankings_io_por_producto_2013.csv",
+            "indicadores/validacion_identidades_io_2013.csv",
+            "indicadores/control_semantico_vector_fila174_2013.csv",
+        }
+        self.assertTrue(expected_groups.issubset(documented_groups))
+
     def test_autoria_unica(self) -> None:
         zenodo = json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
         self.assertEqual(
@@ -166,7 +273,12 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertIn('family-names: "Osorio"', citation)
 
     def test_doi_consistente(self) -> None:
-        doi = "10.5281/zenodo.22086008"
+        config = (
+            ROOT / "04_reproduccion_python" / "config_mip.yaml"
+        ).read_text(encoding="utf-8")
+        doi_match = re.search(r'^\s*doi:\s*["\']([^"\']+)["\']', config, re.MULTILINE)
+        self.assertIsNotNone(doi_match)
+        doi = doi_match.group(1)
         citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
         codemeta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
         metadata = json.loads(

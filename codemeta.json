@@ -2,9 +2,9 @@
   "@context": "https://w3id.org/codemeta/3.1",
   "type": "SoftwareSourceCode",
   "name": "Código para reproducir la MIP producto por producto de Guatemala 2013",
-  "description": "Código Python para extraer, transformar, validar y publicar matrices y vectores derivados de la MIP producto por producto de Guatemala 2013.",
-  "version": "1.0.0",
-  "identifier": "https://doi.org/10.5281/zenodo.22086008",
+  "description": "Código Python para extraer, transformar y validar la MIP producto por producto de Guatemala 2013, y publicar matrices por origen, vectores contables, coeficientes técnicos, inversa de Leontief, multiplicadores y controles reproducibles.",
+  "version": "1.1.0",
+  "identifier": "https://doi.org/10.5281/zenodo.22089741",
   "author": [
     {
       "type": "Person",
@@ -26,6 +26,8 @@
     "matriz insumo-producto",
     "Leontief",
     "Guatemala",
+    "multiplicadores insumo-producto",
+    "encadenamientos productivos",
     "reproducibilidad"
   ]
 }

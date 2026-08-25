@@ -1,0 +1,12 @@
+control_id,descripcion,valor_max_abs,tolerancia,estado
+IO-01,(I - A_domestica) @ L = I,5.10702591327572e-15,1e-09,APROBADO
+IO-02,L @ (I - A_domestica) = I,5.32907051820075e-15,1e-09,APROBADO
+IO-03,L = I + A_domestica @ L,5.23799753571197e-15,1e-09,APROBADO
+IO-04,A_total = A_domestica + A_importada,1.01307850997046e-15,1e-09,APROBADO
+IO-05,Z_domestica = A_domestica @ diag(x),9.85522774499259e-12,1e-09,APROBADO
+IO-06,Z_importada = A_importada @ diag(x),1.09139364212751e-11,1e-09,APROBADO
+IO-07,x = A_domestica @ x + y_domestica_balanceada,5.0931703299284e-11,1e-09,APROBADO
+IO-08,x = L @ y_domestica_balanceada,9.45874489843845e-11,1e-09,APROBADO
+IO-09,Insumos domésticos + importados + impuestos netos sobre insumos intermedios + VAB suman uno por columna,6.21724893790088e-15,1e-09,APROBADO
+IO-10,Media del encadenamiento hacia atrás normalizado = 1,0,1e-09,APROBADO
+IO-11,Media del índice de sensibilidad de dispersión hacia adelante RH = 1; no Ghosh,0,1e-09,APROBADO
