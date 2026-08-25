@@ -1,6 +1,6 @@
 # Registro de cambios
 
-## Próxima versión — pendiente de publicación
+## 1.1.0 — 2026-08-24
 
 - Cuaderno reconstruido como visor didáctico ejecutado, con código plegado,
   controles, gráficos, selectores, simulador y salidas guardadas.

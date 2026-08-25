@@ -12,7 +12,7 @@ from .analysis import (
     write_analytical_outputs,
 )
 
-__version__ = "1.0.0"
+__version__ = "1.1.0"
 
 __all__ = [
     "DemandShockImpact",

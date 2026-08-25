@@ -25,7 +25,7 @@
    indirecta, importaciones, VAB y empleo asociado.
 5. Verifique unidades, signos y productos con producción nula.
 6. Guarde el vector de choque y los parámetros fuera de la base canónica.
-7. Cite la versión 1.0.0 y el DOI `10.5281/zenodo.22086008`.
+7. Cite la versión 1.1.0 y el DOI `10.5281/zenodo.22089741`.
 
 ## 3. Archivos para un choque reproducible
 

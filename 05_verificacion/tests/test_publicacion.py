@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import re
 import sys
 import unittest
 from pathlib import Path
@@ -109,7 +110,11 @@ class PublicacionDerivadaTests(unittest.TestCase):
 
     def test_metadatos(self) -> None:
         metadata = json.loads((RESULTS / "metadatos_dataset.json").read_text("utf-8"))
-        self.assertEqual(metadata["version"], "1.0.0")
+        zenodo = json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
+        package_version = __import__("mip_gt").__version__
+        self.assertEqual(metadata["version"], zenodo["version"])
+        self.assertEqual(metadata["version"], package_version)
+        self.assertRegex(metadata["version"], r"^\d+\.\d+\.\d+$")
         self.assertEqual(metadata["products"], 152)
         self.assertTrue(metadata["mandatory_controls_passed"])
         self.assertLess(metadata["spectral_radius_a_domestic"], 1.0)
@@ -268,7 +273,12 @@ class PublicacionDerivadaTests(unittest.TestCase):
         self.assertIn('family-names: "Osorio"', citation)
 
     def test_doi_consistente(self) -> None:
-        doi = "10.5281/zenodo.22086008"
+        config = (
+            ROOT / "04_reproduccion_python" / "config_mip.yaml"
+        ).read_text(encoding="utf-8")
+        doi_match = re.search(r'^\s*doi:\s*["\']([^"\']+)["\']', config, re.MULTILINE)
+        self.assertIsNotNone(doi_match)
+        doi = doi_match.group(1)
         citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
         codemeta = json.loads((ROOT / "codemeta.json").read_text(encoding="utf-8"))
         metadata = json.loads(

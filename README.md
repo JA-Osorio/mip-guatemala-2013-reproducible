@@ -2,7 +2,7 @@
 
 [![Validación](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml/badge.svg)](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml)
 [![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22086008.svg)](https://doi.org/10.5281/zenodo.22086008)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22089741.svg)](https://doi.org/10.5281/zenodo.22089741)
 [![Datos: CC BY 4.0](https://img.shields.io/badge/datos-CC%20BY%204.0-green.svg)](LICENSE)
 [![Código: MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-blue.svg)](LICENSE_CODE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg)](https://www.python.org/)
@@ -40,7 +40,7 @@ temática específica.
 
 ## Resultados publicados
 
-La versión 1.0.0 conserva la estructura oficial de 2013, a precios básicos y
+La versión 1.1.0 conserva la estructura oficial de 2013, a precios básicos y
 en millones de quetzales.
 
 | Resultado | Valor |
@@ -331,8 +331,8 @@ conservan sus condiciones de origen.
 Citación sugerida:
 
 > Osorio, Juan Alejandro (2026). *MIP Guatemala 2013 reproducible* (versión
-> 1.0.0) [Conjunto de datos y código]. Zenodo.
-> https://doi.org/10.5281/zenodo.22086008
+> 1.1.0) [Conjunto de datos y código]. Zenodo.
+> https://doi.org/10.5281/zenodo.22089741
 
 Metadatos para gestores y repositorios: [`CITATION.cff`](CITATION.cff),
 [`codemeta.json`](codemeta.json) y [`.zenodo.json`](.zenodo.json).

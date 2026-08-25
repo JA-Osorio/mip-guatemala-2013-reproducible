@@ -8,9 +8,9 @@ authors:
     orcid: "https://orcid.org/0009-0001-4260-772X"
     affiliation: "Universidad Rafael Landívar"
     email: "jaosorio@url.edu.gt"
-version: 1.0.0
+version: 1.1.0
 date-released: 2026-08-24
-doi: "10.5281/zenodo.22086008"
+doi: "10.5281/zenodo.22089741"
 abstract: >-
   Conjunto de datos y código reproducible para extraer, documentar y validar
   la matriz insumo-producto producto por producto de Guatemala 2013. Publica
@@ -27,4 +27,4 @@ keywords:
   - "reproducibilidad"
 license: CC-BY-4.0
 repository-code: "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible"
-url: "https://doi.org/10.5281/zenodo.22086008"
+url: "https://doi.org/10.5281/zenodo.22089741"
