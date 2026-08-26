@@ -1,11 +1,9 @@
 # Matriz Insumo-Producto (MIP) de Guatemala, año de referencia 2013
 
-[![Validación](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml/badge.svg)](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml)
-[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/v1.1.0/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22089741.svg)](https://doi.org/10.5281/zenodo.22089741)
-[![Datos: CC BY 4.0](https://img.shields.io/badge/datos-CC%20BY%204.0-green.svg)](LICENSE)
-[![Código: MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-blue.svg)](LICENSE_CODE)
-[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
+[![Datos: CC BY 4.0](https://img.shields.io/badge/datos-CC%20BY%204.0-1682FC.svg)](LICENSE)
+[![Código: MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-2EA44F.svg)](LICENSE_CODE)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22086007.svg)](https://doi.org/10.5281/zenodo.22086007)
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/v1.1.0/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
 
 Versión abierta, auditable y lista para análisis de la **Matriz
 Insumo-Producto (MIP) de Guatemala, año de referencia 2013, producto por
@@ -19,13 +17,36 @@ coeficientes técnicos, inversa de Leontief, multiplicadores y controles de
 calidad. El alcance es estadístico y computacional; no contiene una aplicación
 temática específica.
 
-La matriz de origen es oficial; la transformación, los indicadores y los
-escenarios son resultados analíticos experimentales y no constituyen
-estadística oficial ni implican aval del Banco de Guatemala.
+> [!WARNING]
+> **La matriz de origen es oficial, pero las transformaciones, los indicadores
+> y los escenarios son resultados analíticos experimentales; no constituyen estadística oficial
+> ni implican aval del Banco de Guatemala.**
 
-**Autor único:** Juan Alejandro Osorio.
+> [!NOTE]
+> La fuente primaria se enlaza institucionalmente, pero no se redistribuye. El
+> repositorio publica los datos derivados, la trazabilidad y todos los insumos
+> necesarios para verificar los resultados disponibles públicamente.
 
-## Qué puede hacer con este repositorio
+## Autor
+
+| Autor | Afiliación | ORCID |
+|---|---|---|
+| [Juan Alejandro Osorio](https://github.com/JA-Osorio) | Universidad Rafael Landívar | [0009-0001-4260-772X](https://orcid.org/0009-0001-4260-772X) |
+
+Los roles y responsabilidades se documentan en [`creditos.txt`](creditos.txt).
+
+## Qué contiene
+
+| Componente | Contenido | Acceso directo |
+|---|---|---|
+| Trazabilidad | Procedencia, condiciones de uso, huellas y rangos de extracción | [`00_trazabilidad_fuentes/`](00_trazabilidad_fuentes/) |
+| Metodología | Método cuantitativo, convenciones, uso y actualización | [`01_metodologia/`](01_metodologia/) |
+| Resultados y diccionario | Matrices, vectores, indicadores, datos largos y definiciones | [`02_resultados_y_diccionario/`](02_resultados_y_diccionario/) |
+| Modelo tabular | Libro de cálculo auditable con resultados y fórmulas de resumen | [`03_modelo_hoja_calculo/`](03_modelo_hoja_calculo/) |
+| Reproducción | Paquete Python, configuración, script maestro y cuaderno visor | [`04_reproduccion_python/`](04_reproduccion_python/) |
+| Verificación | Controles, pruebas, balances e informe de reproducción | [`05_verificacion/`](05_verificacion/) |
+
+## Accesos rápidos
 
 | Objetivo | Archivo recomendado | Uso |
 |---|---|---|
@@ -43,7 +64,7 @@ estadística oficial ni implican aval del Banco de Guatemala.
 | Entender el método completo | [`metodologia_cuantitativa_mip_2013.md`](01_metodologia/metodologia_cuantitativa_mip_2013.md) | Fuente, rangos, identidades, modelo, indicadores y límites |
 | Adaptar una MIP futura | [`guia_uso_analisis_io_y_actualizacion.md`](01_metodologia/guia_uso_analisis_io_y_actualizacion.md) | Ruta operativa y lista de verificación |
 
-## Resultados publicados
+## Resultados principales
 
 La versión 1.1.0 conserva la estructura oficial de 2013, a precios básicos y
 en millones de quetzales.
@@ -72,6 +93,9 @@ balanceada utilizado por el sistema de Leontief.
 
 ### Estado de calidad
 
+[![Validación automática](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml/badge.svg?branch=main)](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
+
 | Conjunto | Controles | Estado |
 |---|---:|---|
 | Fuente, estructura, matrices, balances y modelo base | 22 | 22 aprobados; 0 advertencias; 0 fallos |
@@ -98,6 +122,17 @@ consistencia de la inversa por ambos lados.
 `indicadores_io_2013.csv` se conserva como cuadro compacto compatible con la
 versión inicial.
 
+## Cuaderno visor
+
+[![Abrir en Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/v1.1.0/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
+
+El [cuaderno visor](04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
+es la forma más sencilla de explorar la MIP sin instalar software. Permite
+buscar cualquiera de los 152 productos, consultar indicadores, comparar
+encadenamientos y simular cambios de demanda final con tablas HTML y figuras
+Plotly. El enlace de Colab está fijado a la etiqueta inmutable `v1.1.0` para
+que la ejecución corresponda a la versión publicada.
+
 ## Ruta didáctica en cinco pasos
 
 1. Abra el [cuaderno en Google
@@ -116,7 +151,9 @@ canónica para reconstruir el conjunto de datos cuando se dispone del libro
 fuente. En Colab, el cuaderno carga la etiqueta inmutable `v1.1.0`, no el estado
 mutable de la rama principal.
 
-## Modelo cuantitativo
+## Metodología y alcance
+
+### Modelo cuantitativo
 
 La celda `zᵈᵢⱼ` es el insumo doméstico `i` utilizado en la producción del
 producto `j`; `zᵐᵢⱼ` tiene la misma orientación para insumos importados. Si `x`
@@ -148,9 +185,9 @@ La [metodología cuantitativa](01_metodologia/metodologia_cuantitativa_mip_2013.
 detalla orientación, identidades, coeficientes, multiplicadores,
 encadenamientos, simulaciones e interpretación.
 
-## Convenciones contables que debe conocer
+### Convenciones contables que debe conocer
 
-### Demanda final y balance
+#### Demanda final y balance
 
 La utilización publicada cumple, dentro del redondeo de fuente:
 
@@ -167,14 +204,14 @@ fᵈ_balanceada = x - Zᵈ1
 Ambos vectores y su diferencia permanecen visibles. No se aplica RAS ni un
 prorrateo oculto.
 
-### Ajuste CIF/FOB
+#### Ajuste CIF/FOB
 
 La fuente muestra el ajuste CIF/FOB con un signo, pero el total de utilización
 lo resta. Por ello el repositorio conserva el valor publicado y también el
 valor aplicado, igual al primero multiplicado por `-1`. Esta convención evita
 una diferencia artificial de Q47.975991 millones.
 
-### Producción nula
+#### Producción nula
 
 `P069`, `P086`, `P087`, `P089`, `P151` y `P152` tienen producción nula y
 columnas de insumos nulas. Sus coeficientes se fijan en cero; no se divide entre
@@ -183,7 +220,7 @@ pueden usarse en exploración descriptiva, pero no deben ser productos objetivo
 de choques o inferencias de impacto porque no tienen coeficientes técnicos
 observados.
 
-### Identidad de costos
+#### Identidad de costos
 
 ```text
 x = (Zᵈ)'1 + (Zᵐ)'1 + impuestos netos sobre productos + VAB
@@ -191,7 +228,7 @@ x = (Zᵈ)'1 + (Zᵐ)'1 + impuestos netos sobre productos + VAB
 
 El VAB se toma de la fila oficial y no se obtiene como residuo.
 
-### PIB: campo legado y alcance del modelo
+#### PIB: campo legado y alcance del modelo
 
 El campo `producto_interno_bruto` de
 `produccion_y_utilizacion_2013.csv` conserva por trazabilidad la fila
@@ -211,7 +248,7 @@ La salvaguarda se publica de forma legible por máquina en
 sobre insumos intermedios asociados que aparecen en el cuadro analítico son un
 diagnóstico separado y **no** un multiplicador de PIB.
 
-## Fuente y trazabilidad
+### Fuente y trazabilidad
 
 La entrada canónica es el libro `MIP_AR2013_NPG.xlsx`. Por prudencia jurídica,
 la copia primaria no forma parte de la distribución pública. Puede mantenerse
@@ -235,9 +272,11 @@ La trazabilidad se distribuye en tres capas:
 - `especificacion_rangos_fuente.csv`: hojas, rangos y tratamiento;
 - `instrucciones_fuente_original.txt`: instalación y verificación de huella.
 
-## Reproducción en Python
+## Reproducir la MIP
 
 Requiere Python 3.11 o posterior.
+
+### Linux, macOS o Git Bash
 
 ```bash
 python -m venv .venv
@@ -246,6 +285,17 @@ python -m pip install --upgrade pip
 python -m pip install -e .
 python 04_reproduccion_python/reproducir_mip_guatemala_2013.py
 python -m unittest discover -s 05_verificacion/tests -v
+```
+
+### Windows (CMD)
+
+```bat
+py -3 -m venv .venv
+.venv\Scripts\activate
+py -3 -m pip install --upgrade pip
+py -3 -m pip install -e .
+py -3 04_reproduccion_python\reproducir_mip_guatemala_2013.py
+py -3 -m unittest discover -s 05_verificacion\tests -v
 ```
 
 Si la fuente está fuera del repositorio:
@@ -316,16 +366,11 @@ actualización](01_metodologia/guia_uso_analisis_io_y_actualizacion.md).
 - Este producto derivado contiene resultados analíticos experimentales: no es
   una estadística oficial ni implica aval del Banco de Guatemala.
 
-## Autoría, licencias, citación y referencias
+## Citación
 
-Autor: **Juan Alejandro Osorio**.
-
-Los datos derivados, la documentación y el libro auditable se distribuyen bajo
-[CC BY 4.0](LICENSE). El código original y las celdas ejecutables del cuaderno,
-bajo [MIT](LICENSE_CODE). Las fuentes primarias y los materiales de terceros
-conservan sus condiciones de origen.
-
-Citación sugerida para la versión archivada:
+Use la opción **Cite this repository** de GitHub o consulte
+[`CITATION.cff`](CITATION.cff). La atribución sugerida para la versión archivada
+es:
 
 > Osorio, Juan Alejandro (2026). *MIP Guatemala 2013 reproducible* (versión
 > 1.1.0) [Conjunto de datos, código y cuaderno computacional]. Zenodo.
@@ -336,6 +381,18 @@ el DOI conceptual `10.5281/zenodo.22086007` reúne todas las versiones. El códi
 asociado se conserva en la etiqueta `v1.1.0` y las huellas SHA-256 de los
 artefactos públicos están en `manifiesto_archivos.txt`. Cita dentro del texto:
 **(Osorio, 2026)**.
+
+## Licencias
+
+| Material | Licencia |
+|---|---|
+| Datos derivados, documentación, tablas, figuras y libro auditable | [CC BY 4.0](LICENSE) |
+| Código Python y celdas ejecutables originales del cuaderno | [MIT](LICENSE_CODE) |
+
+Las fuentes primarias y los materiales de terceros conservan sus derechos y
+condiciones de uso de origen; este producto no los relicencia.
+
+## Referencias
 
 Referencias metodológicas y estadísticas principales:
 
@@ -363,3 +420,7 @@ Referencias metodológicas y estadísticas principales:
 
 Metadatos para gestores y repositorios: [`CITATION.cff`](CITATION.cff),
 [`codemeta.json`](codemeta.json) y [`.zenodo.json`](.zenodo.json).
+
+---
+
+**Versión 1.1.0 · Guatemala · año de referencia 2013**
