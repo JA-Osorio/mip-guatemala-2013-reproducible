@@ -1,6 +1,6 @@
 # Registro de cambios
 
-## 1.1.0 — 2026-08-24
+## 1.1.0 — 2026-08-25
 
 - Cuaderno reconstruido como visor didáctico ejecutado, con código plegado,
   controles, gráficos, selectores, simulador y salidas guardadas.
@@ -17,6 +17,12 @@
   la fila 174 se marca como campo legado no aditivo, no utilizable como PIB.
 - Pruebas ampliadas para comparar elemento a elemento con el libro fuente y
   preservar la calidad del cuaderno y el alcance exclusivamente IO.
+- Tablas del cuaderno migradas a HTML estable para conservar alineación y
+  contenido al abrir, actualizar y volver a ejecutar en Google Colab.
+- Ejecución de Colab fijada a la etiqueta inmutable `v1.1.0`; citación y
+  metadatos vinculados al DOI de versión `10.5281/zenodo.22089741`.
+- Retiro de dos comparaciones históricas no redistribuibles y de su marcador
+  de archivo; la versión 1.0.0 permanece preservada en Zenodo.
 
 ## 1.0.0 — 2026-08-24
 

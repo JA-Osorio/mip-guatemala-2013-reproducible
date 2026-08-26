@@ -9,7 +9,7 @@ construcción matricial, los indicadores publicados, las simulaciones de
 demanda final, los controles de calidad y el procedimiento para incorporar una
 MIP futura.
 
-La versión 1.0.0 trabaja con 152 productos de la Nomenclatura de Productos de
+La versión 1.1.0 trabaja con 152 productos de la Nomenclatura de Productos de
 Guatemala (`P001`–`P152`), a precios básicos y en millones de quetzales. El
 modelo es producto por producto: no debe interpretarse automáticamente como
 una matriz industria por industria.

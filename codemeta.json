@@ -15,7 +15,7 @@
     }
   ],
   "programmingLanguage": "Python",
-  "runtimePlatform": "Python 3.10 or later",
+  "runtimePlatform": "Python 3.11 or later",
   "codeRepository": "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible",
   "issueTracker": "https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/issues",
   "schema:inLanguage": "es",

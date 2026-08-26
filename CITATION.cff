@@ -1,5 +1,5 @@
 cff-version: "1.2.0"
-message: "Si utiliza este producto de datos y código, cítelo mediante los metadatos de este archivo."
+message: "Si utiliza este producto de datos, código y cuaderno computacional, cítelo mediante los metadatos de este archivo."
 title: "MIP Guatemala 2013 reproducible"
 type: dataset
 authors:
@@ -9,10 +9,10 @@ authors:
     affiliation: "Universidad Rafael Landívar"
     email: "jaosorio@url.edu.gt"
 version: 1.1.0
-date-released: 2026-08-24
+date-released: 2026-08-25
 doi: "10.5281/zenodo.22089741"
 abstract: >-
-  Conjunto de datos y código reproducible para extraer, documentar y validar
+  Conjunto de datos, código y cuaderno computacional para extraer, documentar y validar
   la matriz insumo-producto producto por producto de Guatemala 2013. Publica
   matrices doméstica e importada separadas, demanda final, cuentas primarias,
   coeficientes técnicos, inversa de Leontief doméstica, multiplicadores,

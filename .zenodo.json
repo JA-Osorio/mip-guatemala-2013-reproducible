@@ -1,7 +1,7 @@
 {
   "title": "MIP Guatemala 2013 reproducible",
   "upload_type": "dataset",
-  "description": "Conjunto de datos y código reproducible para extraer, documentar y validar la matriz insumo-producto producto por producto de Guatemala 2013. Publica matrices doméstica e importada separadas, demanda final, cuentas primarias, coeficientes técnicos, inversa de Leontief doméstica, multiplicadores, encadenamientos, choques unitarios y controles computacionales para 152 productos.",
+  "description": "Conjunto de datos, código y cuaderno computacional reproducible para extraer, documentar y validar la matriz insumo-producto producto por producto de Guatemala 2013. Publica matrices doméstica e importada separadas, demanda final, cuentas primarias, coeficientes técnicos, inversa de Leontief doméstica, multiplicadores, encadenamientos, choques unitarios y controles computacionales para 152 productos.",
   "creators": [
     {
       "name": "Osorio, Juan Alejandro",
@@ -29,5 +29,5 @@
     "encadenamientos productivos",
     "reproducibilidad"
   ],
-  "notes": "Los datos derivados y la documentación se rigen por CC BY 4.0; el código original por MIT. Las fuentes primarias no forman parte de la distribución pública."
+  "notes": "La matriz de origen es oficial; las transformaciones, los indicadores y los escenarios son resultados analíticos experimentales y no constituyen estadística oficial. Los datos derivados y la documentación se rigen por CC BY 4.0; el código original por MIT. Las fuentes primarias no forman parte de la distribución pública."
 }

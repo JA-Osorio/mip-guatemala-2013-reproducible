@@ -291,12 +291,17 @@ def export_outputs(
         "title": project["title"],
         "version": project["version"],
         "doi": project["doi"],
+        "concept_doi": project["concept_doi"],
         "generated_at_utc": datetime.now(timezone.utc).isoformat(),
         "source_file_name": source.source_path.name,
         "source_sha256": source.source_sha256,
         "year": project["year"],
         "valuation": project["valuation"],
         "currency_unit": project["currency_unit"],
+        "official_source": True,
+        "official_statistics": False,
+        "analytical_status": "experimental_derived_results",
+        "randomness": "none",
         "products": len(source.codes),
         "zero_output_products": [
             code for code, value in zip(source.codes, source.output) if value == 0
@@ -335,6 +340,8 @@ def write_reproduction_report(
         f"SHA-256: {source.source_sha256}",
         "Cobertura: 152 productos, año de referencia 2013",
         "Valoración: precios básicos; millones de quetzales",
+        "Aleatoriedad: no se utiliza; semilla no aplicable",
+        "Estado: resultados analíticos experimentales; no son estadística oficial",
         "",
         "RESULTADOS DE CONTROL",
         f"Aprobados: {approved}",
@@ -373,13 +380,16 @@ def write_public_manifest(root: Path, path: Path) -> None:
         "dist",
         "fuentes_originales_no_redistribuidas",
     }
-    excluded_names = {path.name, ".DS_Store"}
+    excluded_names = {path.name, ".DS_Store", ".git"}
     records: list[tuple[str, int, str]] = []
     for file_path in sorted(root.rglob("*")):
         if not file_path.is_file():
             continue
         relative = file_path.relative_to(root)
-        if any(part in excluded_parts for part in relative.parts):
+        if any(
+            part in excluded_parts or part.endswith(".egg-info")
+            for part in relative.parts
+        ):
             continue
         if file_path.name in excluded_names:
             continue

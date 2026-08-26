@@ -120,7 +120,7 @@ multiplicador de oferta ni a un modelo de Ghosh.
 
 ## 6. Reproducir desde la fuente
 
-Se recomienda Python 3.10 o posterior.
+Se recomienda Python 3.11 o posterior.
 
 ```bash
 python -m venv .venv
