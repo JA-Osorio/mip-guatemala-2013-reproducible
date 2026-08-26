@@ -47,7 +47,7 @@ de filas de L_d es el índice de sensibilidad de dispersión de
 Rasmussen-Hirschman, a veces llamado encadenamiento hacia adelante. No es un
 multiplicador de oferta ni un modelo de Ghosh.
 
-Controles matemáticos de la versión 1.0.0:
+Controles matemáticos de la versión 1.1.0:
 
   radio espectral de A_d = 0.390615854513 < 1
   número de condición de I - A_d = 2.981038978787

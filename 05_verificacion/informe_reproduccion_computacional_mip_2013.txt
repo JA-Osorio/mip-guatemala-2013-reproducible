@@ -4,6 +4,8 @@ Fuente: MIP_AR2013_NPG.xlsx
 SHA-256: 44ad0eb8136d3d42622c6727f911eb84e9c3d64a3f502fc706446dc3523af5a2
 Cobertura: 152 productos, año de referencia 2013
 Valoración: precios básicos; millones de quetzales
+Aleatoriedad: no se utiliza; semilla no aplicable
+Estado: resultados analíticos experimentales; no son estadística oficial
 
 RESULTADOS DE CONTROL
 Aprobados: 22

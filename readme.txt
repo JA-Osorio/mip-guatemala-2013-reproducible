@@ -1,6 +1,10 @@
-MIP GUATEMALA 2013 REPRODUCIBLE — v1.1.0
+MATRIZ INSUMO-PRODUCTO (MIP) DE GUATEMALA, AÑO DE REFERENCIA 2013 — v1.1.0
 
-DOI: https://doi.org/10.5281/zenodo.22089741
+DOI de esta versión:
+https://doi.org/10.5281/zenodo.22089741
+
+DOI conceptual de todas las versiones:
+https://doi.org/10.5281/zenodo.22086007
 
 Paquete para extraer, transformar y validar la matriz insumo-producto producto
 por producto de Guatemala 2013. La fuente oficial se mantiene fuera de la
@@ -18,6 +22,10 @@ Salida validada: 152 productos, matrices doméstica e importada separadas,
 coeficientes técnicos, inversa de Leontief doméstica, cuentas primarias,
 demanda final, multiplicadores, choques unitarios, rankings, balances,
 metadatos y manifiesto.
+
+La matriz de origen es oficial; las transformaciones, los indicadores y los
+escenarios de este paquete son resultados analíticos experimentales y no
+constituyen estadística oficial.
 
 Consulte README.md para la ruta didáctica, la tabla de archivos, los resultados,
 los controles y el acceso directo al cuaderno ejecutable en Google Colab. La

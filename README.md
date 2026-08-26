@@ -1,15 +1,16 @@
-# MIP Guatemala 2013 reproducible
+# Matriz Insumo-Producto (MIP) de Guatemala, año de referencia 2013
 
 [![Validación](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml/badge.svg)](https://github.com/JA-Osorio/mip-guatemala-2013-reproducible/actions/workflows/validar.yml)
-[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
+[![Abrir en Google Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/v1.1.0/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22089741.svg)](https://doi.org/10.5281/zenodo.22089741)
 [![Datos: CC BY 4.0](https://img.shields.io/badge/datos-CC%20BY%204.0-green.svg)](LICENSE)
 [![Código: MIT](https://img.shields.io/badge/c%C3%B3digo-MIT-blue.svg)](LICENSE_CODE)
-[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB.svg)](https://www.python.org/)
+[![Python 3.11+](https://img.shields.io/badge/Python-3.11%2B-3776AB.svg)](https://www.python.org/)
 
-Una versión abierta, auditable y lista para análisis de la matriz
-insumo-producto (MIP) **producto por producto** de Guatemala para 2013,
-publicada por el Banco de Guatemala.
+Versión abierta, auditable y lista para análisis de la **Matriz
+Insumo-Producto (MIP) de Guatemala, año de referencia 2013, producto por
+producto**, elaborada por el Banco de Guatemala y publicada en diciembre de
+2019 (Banco de Guatemala, 2019b, 2019c).
 
 El repositorio transforma el libro institucional en matrices y vectores
 documentados para 152 productos, separa insumos domésticos e importados,
@@ -18,13 +19,17 @@ coeficientes técnicos, inversa de Leontief, multiplicadores y controles de
 calidad. El alcance es estadístico y computacional; no contiene una aplicación
 temática específica.
 
+La matriz de origen es oficial; la transformación, los indicadores y los
+escenarios son resultados analíticos experimentales y no constituyen
+estadística oficial ni implican aval del Banco de Guatemala.
+
 **Autor único:** Juan Alejandro Osorio.
 
 ## Qué puede hacer con este repositorio
 
 | Objetivo | Archivo recomendado | Uso |
 |---|---|---|
-| Aprender el flujo sin instalar nada | [`cuaderno_exploracion_mip_2013.ipynb`](04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb) | Abrir en Colab, explorar productos y simular un choque |
+| Aprender el flujo sin instalar nada | [`cuaderno_exploracion_mip_2013.ipynb`](04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb) | Abrir en Colab, explorar productos y simular un choque con figuras Plotly y tablas HTML estables |
 | Consultar multiplicadores completos | [`indicadores_io_completos_2013.csv`](02_resultados_y_diccionario/indicadores/indicadores_io_completos_2013.csv) | Efectos directos, indirectos y totales, encadenamientos y rankings |
 | Comparar choques unitarios | [`impactos_choque_unitario_demanda_final_2013.csv`](02_resultados_y_diccionario/indicadores/impactos_choque_unitario_demanda_final_2013.csv) | Un choque de Q1 millón en cada uno de los 152 productos |
 | Simular demanda final | [`Leontief_domestica_2013.csv`](02_resultados_y_diccionario/matrices/Leontief_domestica_2013.csv) | Calcular producción doméstica directa e indirecta |
@@ -96,7 +101,7 @@ versión inicial.
 ## Ruta didáctica en cinco pasos
 
 1. Abra el [cuaderno en Google
-   Colab](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb).
+   Colab](https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/v1.1.0/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb).
 2. Busque el código del producto en
    `02_resultados_y_diccionario/productos_2013.csv`.
 3. Defina un cambio de demanda final en millones de quetzales de 2013 a
@@ -108,13 +113,15 @@ versión inicial.
 
 El cuaderno es la entrada didáctica. El script maestro sigue siendo la entrada
 canónica para reconstruir el conjunto de datos cuando se dispone del libro
-fuente.
+fuente. En Colab, el cuaderno carga la etiqueta inmutable `v1.1.0`, no el estado
+mutable de la rama principal.
 
 ## Modelo cuantitativo
 
 La celda `zᵈᵢⱼ` es el insumo doméstico `i` utilizado en la producción del
 producto `j`; `zᵐᵢⱼ` tiene la misma orientación para insumos importados. Si `x`
-es la producción por producto:
+es la producción por producto, los coeficientes y la inversa se definen como
+sigue (Leontief, 1936; Miller y Blair, 2022):
 
 ```text
 Aᵈ = Zᵈ diag(x)⁻¹
@@ -230,7 +237,7 @@ La trazabilidad se distribuye en tres capas:
 
 ## Reproducción en Python
 
-Requiere Python 3.10 o posterior.
+Requiere Python 3.11 o posterior.
 
 ```bash
 python -m venv .venv
@@ -268,21 +275,11 @@ Si falla un control obligatorio, la exportación se detiene.
 03_modelo_hoja_calculo/        vista Excel auditable de los derivados
 04_reproduccion_python/        script, paquete, configuración y cuaderno
 05_verificacion/               controles, balances, pruebas e informe
-98_archivo_historico/          materiales aislados; no alimentan la reproducción
 ```
 
 Los CSV anchos preservan las matrices completas. `datos_largos/` entrega
 transacciones intermedias y demanda final en formato normalizado para R,
 Python, bases de datos y visualización.
-
-## Comparación con construcciones previas
-
-`Z_domestica_2013.csv` se contrastó con dos libros históricos proporcionados
-por el equipo. Ambos conservan el mismo bloque doméstico, con diferencia máxima
-absoluta de `5.0022e-12`, atribuible a serialización numérica. No bastan para
-reconstruir el sistema completo porque no preservan conjuntamente la matriz
-importada, demanda final, producción, impuestos y VAB. El contraste está en
-`05_verificacion/comparacion_con_construcciones_previas.csv`.
 
 ## Cómo actualizar cuando se publique otra MIP
 
@@ -316,10 +313,10 @@ actualización](01_metodologia/guia_uso_analisis_io_y_actualizacion.md).
   multiplicador de oferta ni un modelo de Ghosh.
 - Las comparaciones temporales requieren armonizar clasificación, valoración y
   metodología.
-- Este producto derivado no es una estadística oficial ni implica aval del
-  Banco de Guatemala.
+- Este producto derivado contiene resultados analíticos experimentales: no es
+  una estadística oficial ni implica aval del Banco de Guatemala.
 
-## Autoría, licencias y citación
+## Autoría, licencias, citación y referencias
 
 Autor: **Juan Alejandro Osorio**.
 
@@ -328,11 +325,41 @@ Los datos derivados, la documentación y el libro auditable se distribuyen bajo
 bajo [MIT](LICENSE_CODE). Las fuentes primarias y los materiales de terceros
 conservan sus condiciones de origen.
 
-Citación sugerida:
+Citación sugerida para la versión archivada:
 
 > Osorio, Juan Alejandro (2026). *MIP Guatemala 2013 reproducible* (versión
-> 1.1.0) [Conjunto de datos y código]. Zenodo.
+> 1.1.0) [Conjunto de datos, código y cuaderno computacional]. Zenodo.
 > https://doi.org/10.5281/zenodo.22089741
+
+El DOI `10.5281/zenodo.22089741` identifica específicamente la versión 1.1.0;
+el DOI conceptual `10.5281/zenodo.22086007` reúne todas las versiones. El código
+asociado se conserva en la etiqueta `v1.1.0` y las huellas SHA-256 de los
+artefactos públicos están en `manifiesto_archivos.txt`. Cita dentro del texto:
+**(Osorio, 2026)**.
+
+Referencias metodológicas y estadísticas principales:
+
+- Banco de Guatemala. (2019a). *Cuentas Nacionales de Guatemala. Año de
+  referencia 2013: Aspectos conceptuales, metodológicos y fuentes de
+  información*.
+  https://banguat.gob.gt/sites/default/files/banguat/cuentasnac/PIB2013/Cuentas_nacionales_de_Guatemala_aspectos_conceptuales_metodologicos.pdf
+- Banco de Guatemala. (2019b). *Matriz Insumo-Producto (MIP), año de
+  referencia 2013: MIP producto por producto* [Archivo de Excel].
+  https://banguat.gob.gt/sites/default/files/banguat/Publica/IMAE/2013/MIP/MIP_AR2013_NPG.xlsx
+- Banco de Guatemala. (2019c). *Matriz Insumo-Producto (MIP): En el marco del
+  cambio de año de referencia 2013 y adopción del SCN 2008. Aspectos
+  conceptuales y metodológicos*.
+  https://banguat.gob.gt/sites/default/files/banguat/Publica/IMAE/2013/MIP/Metodologia_MIP_AR2013.pdf
+- Hirschman, A. O. (1958). *The strategy of economic development*. Yale
+  University Press.
+- Leontief, W. W. (1936). Quantitative input and output relations in the
+  economic systems of the United States. *The Review of Economics and
+  Statistics, 18*(3), 105–125. https://doi.org/10.2307/1927837
+- Miller, R. E. y Blair, P. D. (2022). *Input-output analysis: Foundations and
+  extensions* (3.ª ed.). Cambridge University Press.
+  https://doi.org/10.1017/9781108676212
+- Rasmussen, P. N. (1956). *Studies in inter-sectoral relations*. Einar
+  Harcks; North-Holland.
 
 Metadatos para gestores y repositorios: [`CITATION.cff`](CITATION.cff),
 [`codemeta.json`](codemeta.json) y [`.zenodo.json`](.zenodo.json).

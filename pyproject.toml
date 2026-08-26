@@ -1,16 +1,17 @@
 [build-system]
-requires = ["setuptools>=69"]
+requires = ["setuptools==83.0.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "mip-guatemala-2013-reproducible"
 version = "1.1.0"
 description = "Extracción, transformación y validación reproducible de la MIP producto por producto de Guatemala 2013."
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 dependencies = [
   "numpy==2.3.5",
   "openpyxl==3.1.5",
   "pandas==2.2.3",
+  "plotly==6.9.0",
   "PyYAML==6.0.3",
 ]
 

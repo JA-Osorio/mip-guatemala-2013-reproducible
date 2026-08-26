@@ -68,7 +68,7 @@ indicadores/impactos_choque_unitario_demanda_final_2013.csv,impuestos_netos_sobr
 indicadores/impactos_choque_unitario_demanda_final_2013.csv,empleo_*_puestos,Puestos directos indirectos y totales asociados,numérico,puestos,Coeficiente de empleo por producción inducida
 indicadores/impactos_choque_unitario_demanda_final_2013.csv,residuo_identidad_produccion_max_abs,Residuo máximo de la identidad del choque,numérico,millones de quetzales,L menos I más propagación doméstica
 indicadores/rankings_io_por_producto_2013.csv,indicador_id,Identificador estable del indicador ordenado,texto,catálogo publicado,Derivado de indicadores completos
-indicadores/rankings_io_por_producto_2013.csv,posicion,Posición secuencial tras ordenar el indicador,entero,1-152,Orden descendente con desempate por código
+indicadores/rankings_io_por_producto_2013.csv,posicion_ordenada,Posición secuencial tras ordenar el indicador,entero,1-152,Orden descendente con desempate por código
 indicadores/rankings_io_por_producto_2013.csv,rango_con_empates,Rango estadístico que conserva empates,entero,1-152,Rango mínimo descendente
 indicadores/rankings_io_por_producto_2013.csv,valor,Valor del indicador ordenado,numérico,según indicador,Indicadores completos
 indicadores/validacion_identidades_io_2013.csv,valor_max_abs,Residuo máximo absoluto de la identidad,numérico,según control,Validación automática

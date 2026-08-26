@@ -114,26 +114,30 @@ class PublicacionDerivadaTests(unittest.TestCase):
         package_version = __import__("mip_gt").__version__
         self.assertEqual(metadata["version"], zenodo["version"])
         self.assertEqual(metadata["version"], package_version)
+        self.assertEqual(metadata["doi"], "10.5281/zenodo.22089741")
+        self.assertEqual(metadata["concept_doi"], "10.5281/zenodo.22086007")
         self.assertRegex(metadata["version"], r"^\d+\.\d+\.\d+$")
         self.assertEqual(metadata["products"], 152)
         self.assertTrue(metadata["mandatory_controls_passed"])
         self.assertLess(metadata["spectral_radius_a_domestic"], 1.0)
+        self.assertTrue(metadata["official_source"])
+        self.assertFalse(metadata["official_statistics"])
+        self.assertEqual(metadata["analytical_status"], "experimental_derived_results")
+        self.assertEqual(metadata["randomness"], "none")
 
     def test_alcance_y_acceso_colab(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
-        notebook = (
-            ROOT / "04_reproduccion_python" / "cuaderno_exploracion_mip_2013.ipynb"
-        ).read_text(encoding="utf-8")
         self.assertIn(
             "El alcance es estadístico y computacional", readme
         )
         colab_url = (
             "https://colab.research.google.com/github/JA-Osorio/"
-            "mip-guatemala-2013-reproducible/blob/main/"
+            "mip-guatemala-2013-reproducible/blob/v1.1.0/"
             "04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb"
         )
         self.assertIn(colab_url, readme)
-        self.assertIn(colab_url, notebook)
+        self.assertIn("resultados analíticos experimentales", readme)
+        self.assertRegex(readme, r"no constituyen\s+estadística oficial")
 
     def test_cuaderno_ejecutado_plegado_y_con_salidas(self) -> None:
         notebook_path = (
@@ -151,14 +155,21 @@ class PublicacionDerivadaTests(unittest.TestCase):
             for output in outputs
             for mime_type in output.get("data", {})
         ]
+        markdown = "\n".join(
+            "".join(cell.get("source", []))
+            for cell in notebook["cells"]
+            if cell["cell_type"] == "markdown"
+        )
 
-        self.assertGreaterEqual(len(code_cells), 8)
+        self.assertEqual(len(code_cells), 16)
         self.assertTrue(
             all(cell.get("execution_count") is not None for cell in code_cells)
         )
-        self.assertGreaterEqual(len(outputs), 30)
-        self.assertGreaterEqual(mime_types.count("image/svg+xml"), 6)
-        self.assertGreaterEqual(mime_types.count("text/html"), 20)
+        self.assertGreaterEqual(len(outputs), 15)
+        self.assertEqual(mime_types.count("application/vnd.plotly.v1+json"), 6)
+        self.assertEqual(mime_types.count("image/svg+xml"), 6)
+        self.assertGreaterEqual(mime_types.count("text/html"), 9)
+        self.assertNotIn("image/png", mime_types)
         self.assertFalse(any(output.get("output_type") == "error" for output in outputs))
         self.assertTrue(
             all(
@@ -169,6 +180,10 @@ class PublicacionDerivadaTests(unittest.TestCase):
             )
         )
         self.assertTrue(
+            all(cell.get("metadata", {}).get("scrolled") is False for cell in code_cells)
+        )
+        self.assertTrue(all(len(cell.get("outputs", [])) <= 1 for cell in code_cells))
+        self.assertTrue(
             all(
                 cell.get("metadata", {})
                 .get("jupyter", {})
@@ -176,13 +191,312 @@ class PublicacionDerivadaTests(unittest.TestCase):
                 for cell in code_cells
             )
         )
-        widget_state = (
-            notebook.get("metadata", {})
-            .get("widgets", {})
-            .get("application/vnd.jupyter.widget-state+json", {})
-            .get("state", {})
+        self.assertIn("$$", markdown)
+        self.assertIn("Matriz Insumo-Producto (MIP) de Guatemala", markdown)
+        self.assertIn("Nomenclatura de Productos de Guatemala (NPG)", markdown)
+        self.assertIn("## Cómo citar este conjunto de datos y cuaderno", markdown)
+        self.assertIn("## Referencias", markdown)
+        self.assertNotIn("## Claves de interpretación", markdown)
+        self.assertIn("(Banco de Guatemala, 2019b, 2019c)", markdown)
+        self.assertIn(
+            "(Hirschman, 1958; Miller & Blair, 2022; Rasmussen, 1956)",
+            markdown,
         )
-        self.assertGreaterEqual(len(widget_state), 1)
+        self.assertIn("(Osorio, 2026)", markdown)
+        self.assertIn("[Conjunto de datos]", markdown)
+        self.assertIn(
+            "[Conjunto de datos, código y cuaderno computacional]. Zenodo.",
+            markdown,
+        )
+        self.assertIn("https://doi.org/10.5281/zenodo.22089741", markdown)
+        self.assertIn("10.5281/zenodo.22086007", markdown)
+        self.assertIn("resultados analíticos experimentales", markdown)
+        self.assertIn("no constituyen estadística oficial", markdown)
+        self.assertEqual(markdown.count('class="referencia-apa"'), 10)
+        self.assertIn("text-indent: -2rem", markdown)
+        self.assertIn("<em>Cuentas Nacionales de Guatemala", markdown)
+        self.assertIn("<em>Matriz Insumo-Producto (MIP)", markdown)
+        self.assertIn('<a href="https://banguat.gob.gt/', markdown)
+        self.assertNotIn("display:flex;flex-wrap:wrap", markdown)
+        self.assertNotIn("152 productos</span>", markdown)
+        self.assertNotIn("- Banco de Guatemala. (2019a).", markdown)
+        self.assertNotIn("**", markdown)
+        self.assertNotIn("—", markdown)
+        self.assertNotIn(r"\[", markdown)
+        self.assertNotIn(r"\]", markdown)
+        for forbidden in (
+            "abrir en colab",
+            "controles de calidad",
+            "descargar qa",
+            "<button",
+        ):
+            self.assertNotIn(forbidden, markdown.lower())
+
+        table_outputs = []
+        svg_outputs = []
+        plotly_outputs = []
+        for output in outputs:
+            data = output.get("data", {})
+            html_output = data.get("text/html", "")
+            if isinstance(html_output, list):
+                html_output = "".join(html_output)
+            if '<table class="mip-tabla' in html_output:
+                table_outputs.append(html_output)
+            svg_output = data.get("image/svg+xml", "")
+            if isinstance(svg_output, list):
+                svg_output = "".join(svg_output)
+            if svg_output:
+                svg_outputs.append(svg_output)
+            plotly_output = data.get("application/vnd.plotly.v1+json")
+            if plotly_output:
+                plotly_outputs.append(plotly_output)
+        self.assertEqual(len(table_outputs), 8)
+        self.assertTrue(all(output.count("<style>") == 1 for output in table_outputs))
+        self.assertEqual(len(plotly_outputs), 6)
+        trace_types = [
+            trace["type"]
+            for output in plotly_outputs
+            for trace in output.get("data", [])
+        ]
+        self.assertEqual(trace_types.count("table"), 0)
+        self.assertGreaterEqual(trace_types.count("bar"), 9)
+        self.assertEqual(trace_types.count("scatter"), 4)
+        self.assertEqual(trace_types.count("heatmap"), 3)
+        self.assertTrue(all("Figura" in output or "Tabla" in output for output in svg_outputs))
+        for collection in (svg_outputs, table_outputs):
+            self.assertTrue(all("Nota." in output for output in collection))
+            self.assertTrue(
+                all("análisis reproducible de Osorio (2026)" in output for output in collection)
+            )
+            self.assertTrue(
+                all("Banco de Guatemala (2019b)" in output for output in collection)
+            )
+            self.assertFalse(any("Juan Alejandro Osorio" in output for output in collection))
+            self.assertFalse(any("Fuente de datos:" in output for output in collection))
+            self.assertFalse(any("borrador en revisión" in output for output in collection))
+            self.assertFalse(any("CC BY 4.0" in output for output in collection))
+        self.assertFalse(
+            any(re.search(r">P\d{3}<", output) for output in svg_outputs + table_outputs)
+        )
+
+        tablas_por_numero = {}
+        for output in table_outputs:
+            coincidencia = re.search(
+                r"<span class='mip-rotulo'>Tabla (\d+)</span>",
+                output,
+            )
+            self.assertIsNotNone(coincidencia)
+            tablas_por_numero[int(coincidencia.group(1))] = output
+            self.assertIn("table-layout:fixed;width:100%", output)
+            self.assertIn("vertical-align:middle", output)
+            self.assertNotIn("font-size:0px", output)
+        self.assertEqual(set(tablas_por_numero), set(range(1, 9)))
+        self.assertIn("Producción bruta", tablas_por_numero[1])
+        self.assertEqual(tablas_por_numero[4].count('<table class="mip-tabla'), 2)
+        self.assertIn(
+            "Índices según Rasmussen (1956) y Hirschman (1958)",
+            tablas_por_numero[4],
+        )
+        for unidad in (
+            "Millones de quetzales de 2013",
+            "Quetzales de producción doméstica por quetzal de demanda final",
+            "Quetzales de insumos importados por quetzal de demanda final",
+            "Quetzales de VAB por quetzal de demanda final",
+            "Puestos por millón de quetzales de demanda final",
+        ):
+            self.assertIn(unidad, tablas_por_numero[5])
+        tabla_6 = tablas_por_numero[6]
+        self.assertIn("<th>Coeficiente total</th>", tabla_6)
+        filas_tabla_6 = re.findall(
+            r'<tr><td class="puesto">\d+</td><th>.*?</th>'
+            r"<td>([^<]+)</td><td>([^<]+)</td><td>([^<]+)</td></tr>",
+            tabla_6,
+        )
+        self.assertEqual(len(filas_tabla_6), 8)
+        for domestico, importado, total in filas_tabla_6:
+            self.assertAlmostEqual(
+                float(domestico.replace(",", ""))
+                + float(importado.replace(",", "")),
+                float(total.replace(",", "")),
+                places=4,
+            )
+
+        for output in plotly_outputs:
+            layout = output.get("layout", {})
+            title = layout.get("title", {}).get("text", "")
+            annotations = " ".join(
+                annotation.get("text", "")
+                for annotation in layout.get("annotations", [])
+            )
+            config = output.get("config", {})
+            image_config = config.get("toImageButtonOptions", {})
+            self.assertRegex(
+                title,
+                r"^<b>Figura \d+</b><br><i>.+</i>$",
+            )
+            self.assertTrue(annotations.strip().startswith("<i>Nota.</i>"))
+            self.assertIn("análisis reproducible de Osorio (2026)", annotations)
+            self.assertIn("Banco de Guatemala (2019b)", annotations)
+            self.assertNotIn("Juan Alejandro Osorio", annotations)
+            self.assertNotIn("Fuente de datos:", annotations)
+            self.assertNotIn("borrador en revisión", annotations)
+            self.assertNotIn("CC BY 4.0", annotations)
+            self.assertEqual(layout.get("title", {}).get("xref"), "container")
+            self.assertGreaterEqual(layout.get("title", {}).get("x", 0), 0.03)
+            self.assertEqual(layout.get("title", {}).get("yref"), "container")
+            self.assertEqual(layout.get("title", {}).get("yanchor"), "top")
+            nota_visual = layout.get("annotations", [])[-1]
+            self.assertAlmostEqual(
+                layout.get("margin", {}).get("l", 0) + nota_visual.get("xshift", 0),
+                36,
+            )
+            self.assertFalse(config.get("displaylogo", True))
+            self.assertTrue(config.get("responsive"))
+            self.assertFalse(config.get("scrollZoom", True))
+            self.assertEqual(image_config.get("format"), "png")
+            self.assertEqual(image_config.get("width"), 1400)
+            self.assertGreaterEqual(image_config.get("height", 0), 700)
+            self.assertEqual(image_config.get("scale"), 2)
+            self.assertTrue(image_config.get("filename"))
+
+        mapas = [
+            output
+            for output in plotly_outputs
+            if [trace.get("type") for trace in output.get("data", [])]
+            == ["heatmap", "heatmap", "heatmap"]
+        ]
+        self.assertEqual(len(mapas), 1)
+        etiquetas_botones = [
+            button["label"]
+            for menu in mapas[0]["layout"].get("updatemenus", [])
+            for button in menu.get("buttons", [])
+        ]
+        self.assertEqual(etiquetas_botones, ["Total", "Doméstica", "Importada"])
+        menus = [
+            menu
+            for output in plotly_outputs
+            for menu in output.get("layout", {}).get("updatemenus", [])
+        ]
+        self.assertEqual(len(menus), 2)
+        self.assertTrue(all(menu.get("yanchor") == "bottom" for menu in menus))
+        self.assertTrue(all(menu.get("y") <= 1.02 for menu in menus))
+
+        source = "\n".join(
+            "".join(cell.get("source", []))
+            for cell in notebook["cells"]
+            if cell["cell_type"] == "code"
+        )
+        self.assertIn("import plotly.graph_objects as go", source)
+        self.assertIn("go.Heatmap", source)
+        self.assertNotIn("go.Table", source)
+        self.assertIn('PLOTLY_VERSION = "6.9.0"', source)
+        self.assertIn('REPO_REF = "v1.1.0"', source)
+        self.assertIn('"--branch", REPO_REF', source)
+        self.assertIn("mip-guatemala-2013-reproducible-{REPO_REF}", source)
+        self.assertIn('"describe", "--tags", "--exact-match"', source)
+        self.assertIn("def tabla_indicadores_html", source)
+        self.assertIn("def tabla_productos_html", source)
+        self.assertIn("def tabla_rankings_html", source)
+        self.assertIn("table-layout:fixed;width:100%", source)
+        self.assertIn("vertical-align:middle", source)
+        self.assertNotIn("def centrar_celda_plotly", source)
+        self.assertNotIn("font-size:0px", source)
+        self.assertIn("total_mostrado", source)
+        self.assertNotIn("Q por Q de demanda final", source)
+        self.assertNotIn("Q1 millón", source)
+        self.assertIn("análisis reproducible de Osorio (2026)", source)
+        self.assertIn("Banco de Guatemala (2019b)", source)
+        self.assertNotIn("Autor de los cálculos, el diseño y la visualización", source)
+        self.assertNotIn("Fuente de datos:", source)
+        self.assertNotIn("borrador en revisión", source)
+        self.assertNotIn("CC BY 4.0", source)
+        self.assertIn(".mip-scroll{overflow:visible}", source)
+        self.assertNotIn("overflow-x:auto", source)
+        self.assertNotIn("elaboración propia", (source + "\n" + "\n".join(table_outputs + svg_outputs)).lower())
+
+    def test_inventario_publico_usa_solo_fuentes_canonicas(self) -> None:
+        registry = pd.read_csv(
+            ROOT / "00_trazabilidad_fuentes" / "registro_fuentes_mip_2013.csv"
+        )
+        self.assertEqual(registry["id_fuente"].tolist(), ["F01", "F02", "F03"])
+        self.assertEqual(set(registry["organismo"]), {"Banco de Guatemala"})
+        for column in (
+            "url_institucional_o_referencia",
+            "fecha_publicacion",
+            "fecha_consulta",
+            "cita_sugerida",
+            "condiciones_uso",
+        ):
+            self.assertIn(column, registry.columns)
+            self.assertTrue(registry[column].notna().all())
+        self.assertTrue(
+            registry["url_institucional_o_referencia"]
+            .str.startswith("https://banguat.gob.gt/")
+            .all()
+        )
+
+        manifest = (ROOT / "manifiesto_archivos.txt").read_text(encoding="utf-8")
+        self.assertNotIn(".venv/", manifest)
+        self.assertNotIn(".egg-info/", manifest)
+        self.assertNotIn("\n.git\t", "\n" + manifest)
+        self.assertNotIn("cuaderno_tablas_numeradas_mip_2013.ipynb", manifest)
+        records = [line.split("\t") for line in manifest.splitlines()[1:] if line]
+        self.assertGreater(len(records), 60)
+        for relative, size, digest in records:
+            path = ROOT / relative
+            self.assertTrue(path.is_file(), relative)
+            self.assertEqual(path.stat().st_size, int(size), relative)
+            self.assertEqual(
+                hashlib.sha256(path.read_bytes()).hexdigest(),
+                digest,
+                relative,
+            )
+
+    def test_dependencia_interactiva_declarada(self) -> None:
+        project = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+        requirements = (
+            ROOT / "04_reproduccion_python" / "requirements.txt"
+        ).read_text(encoding="utf-8")
+        self.assertIn('"plotly==6.9.0"', project)
+        self.assertIn("plotly==6.9.0", requirements)
+        self.assertIn('requires-python = ">=3.11"', project)
+        for relative in (
+            "README.md",
+            "codemeta.json",
+            "01_metodologia/guia_uso_analisis_io_y_actualizacion.md",
+            "04_reproduccion_python/instrucciones_reproduccion_python.txt",
+        ):
+            self.assertIn("3.11", (ROOT / relative).read_text(encoding="utf-8"))
+
+    def test_metadatos_de_publicacion_final(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        citation = (ROOT / "CITATION.cff").read_text(encoding="utf-8")
+        zenodo = json.loads((ROOT / ".zenodo.json").read_text(encoding="utf-8"))
+        self.assertIn("10.5281/zenodo.22089741", readme)
+        self.assertIn("10.5281/zenodo.22086007", readme)
+        self.assertNotIn("DOI reservado", readme)
+        self.assertIn("date-released: 2026-08-25", citation)
+        self.assertEqual(zenodo["version"], "1.1.0")
+        self.assertIn("resultados analíticos experimentales", zenodo["notes"])
+
+    def test_diccionario_usa_nombres_publicados(self) -> None:
+        dictionary = pd.read_csv(RESULTS / "diccionario_variables.csv")
+        ranking_fields = set(
+            dictionary.loc[
+                dictionary["archivo_o_grupo"]
+                == "indicadores/rankings_io_por_producto_2013.csv",
+                "variable",
+            ]
+        )
+        actual_fields = set(
+            pd.read_csv(
+                RESULTS / "indicadores" / "rankings_io_por_producto_2013.csv",
+                nrows=0,
+            ).columns
+        )
+        self.assertIn("posicion_ordenada", ranking_fields)
+        self.assertIn("posicion_ordenada", actual_fields)
+        self.assertNotIn("posicion", ranking_fields)
 
     def test_repositorio_sin_aplicacion_tematica(self) -> None:
         text_extensions = {

@@ -1,10 +1,10 @@
 REPRODUCCIÓN EN PYTHON
 
-Requisitos: Python 3.10 o posterior.
+Requisitos: Python 3.11 o posterior.
 
 Entrada didáctica en Google Colab:
 
-https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/main/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb
+https://colab.research.google.com/github/JA-Osorio/mip-guatemala-2013-reproducible/blob/v1.1.0/04_reproduccion_python/cuaderno_exploracion_mip_2013.ipynb
 
 1. Instalar dependencias desde la raíz:
 
